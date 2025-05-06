@@ -1,0 +1,14 @@
+package model;
+
+public enum TipoMembresia {
+
+	MESAUTO,
+	MESMOTO,
+	MESCAMION,
+	TRESMESESAUTO,
+	TRESMESESMOTO,
+	TRESMESESCAMION,
+	ANIOAUTO,
+	ANIOMOTO,
+	ANIOCAMION
+}
