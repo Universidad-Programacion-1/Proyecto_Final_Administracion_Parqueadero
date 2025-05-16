@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="859.0" prefWidth="1202.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="viewController.CrearVehiculoViewController">
+   <children>
+      <SplitPane dividerPositions="0.4088200238379023" layoutX="6.0" orientation="VERTICAL" prefHeight="841.0" prefWidth="1183.0">
+        <items>
+          <AnchorPane maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="300.0" prefWidth="500.0">
+               <children>
+                  <Pane layoutX="126.0" layoutY="14.0" prefHeight="500.0" prefWidth="929.0" style="-fx-border-image-width: 1px;">
+                     <effect>
+                        <Blend />
+                     </effect>
+                     <children>
+                        <Label layoutX="255.0" layoutY="29.0" text="Crear Vehiculo">
+                           <font>
+                              <Font name="System Bold" size="64.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="242.0" layoutY="153.0" prefHeight="17.0" prefWidth="64.0" text="Placa:">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="239.0" layoutY="190.0" prefHeight="27.0" prefWidth="57.0" text="Color:">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="241.0" layoutY="225.0" text="Modelo:">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <ComboBox fx:id="cbxTipoMembresia" layoutX="623.0" layoutY="217.0" prefHeight="31.0" prefWidth="153.0" promptText="Tipo de Membresia" />
+                        
+                        <TextField fx:id="txtPlaca" layoutX="316.0" layoutY="151.0" prefHeight="31.0" prefWidth="168.0" />
+                        <TextField fx:id="txtModelo" layoutX="316.0" layoutY="223.0" prefHeight="31.0" prefWidth="168.0" />
+                        <TextField fx:id="txtColor" layoutX="316.0" layoutY="188.0" prefHeight="31.0" prefWidth="168.0" />
+                        <Button fx:id="btnActualizarVehiculo" layoutX="541.0" layoutY="351.0" mnemonicParsing="false" onAction="#onActualizarVehiculo" text="Actualizar Vehiculo" />
+                        <Button fx:id="btbAgregarVehiculo" layoutX="265.0" layoutY="351.0" mnemonicParsing="false" onAction="#onAgregarVehiculo" text="Agregar Vehiculo" />
+                        <Button fx:id="dtnAtras" layoutX="871.0" layoutY="14.0" mnemonicParsing="false" onAction="#onOpenMenu" prefHeight="37.0" prefWidth="44.0" style="-fx-background-color: red; -fx-border-color: black;" text="X" />
+                        <TextField fx:id="txtCliente" layoutX="316.0" layoutY="263.0" prefHeight="31.0" prefWidth="168.0" />
+                        <Label layoutX="241.0" layoutY="265.0" prefHeight="27.0" prefWidth="66.0" text="Cliente:">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="505.0" layoutY="153.0" prefHeight="17.0" prefWidth="64.0" text="Fecha :">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="505.0" layoutY="219.0" prefHeight="27.0" prefWidth="108.0" text="Membresia">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <DatePicker fx:id="cbxFechaInicial" layoutX="623.0" layoutY="154.0" prefHeight="31.0" prefWidth="153.0" />
+                     </children>
+                  </Pane>
+               </children>
+            </AnchorPane>
+          <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="0.0" minWidth="0.0" prefHeight="407.0" prefWidth="1181.0">
+               <children>
+                  <TableView fx:id="tblListVehiculos" layoutX="289.0" layoutY="7.0" prefHeight="248.0" prefWidth="656.0">
+                    <columns>
+                      <TableColumn fx:id="tbcPlaca" prefWidth="55.0" text="Placa" />
+                      <TableColumn fx:id="tbcMarca" prefWidth="58.0" text="Marca" />
+                        <TableColumn fx:id="tbcModelo" prefWidth="64.0" text="Modelo" />
+                        <TableColumn fx:id="tbcCliente" prefWidth="83.0" text="Clente" />
+                        <TableColumn fx:id="tbcTipoMembresia" prefWidth="137.0" text="Tipo de Membresia" />
+                        <TableColumn fx:id="tbcTipoMembresia1" prefWidth="123.0" text="Fecha de Inicio" />
+                        <TableColumn fx:id="tbcTipoMembresia2" prefWidth="151.0" text="Fecha Fin" />
+                    </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>
