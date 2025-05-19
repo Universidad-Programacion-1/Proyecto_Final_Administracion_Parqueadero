@@ -58,7 +58,7 @@
                   <TableView fx:id="tblListVehiculos" layoutX="348.0" layoutY="37.0" prefHeight="248.0" prefWidth="488.0">
                     <columns>
                       <TableColumn fx:id="tbcPlaca" prefWidth="247.0" text="Placa" />
-                        <TableColumn fx:id="tbcTipoMembresia1" minWidth="4.0" prefWidth="240.0" text="Hora de Inicio" />
+                        <TableColumn fx:id="tbcHoraInicio" minWidth="4.0" prefWidth="240.0" text="Hora de Inicio" />
                     </columns>
                   </TableView>
                </children>

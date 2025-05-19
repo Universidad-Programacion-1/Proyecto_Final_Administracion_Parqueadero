@@ -3,6 +3,6 @@ module org.openjfx.Administracion_Parqueadero {
     requires javafx.fxml;
 
     opens org.openjfx.Administracion_Parqueadero to javafx.fxml;
-    opens controller to javafx.fxml;
+    opens viewController to javafx.fxml;
     exports org.openjfx.Administracion_Parqueadero;
 }

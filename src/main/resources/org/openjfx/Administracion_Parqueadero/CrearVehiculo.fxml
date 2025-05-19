@@ -38,7 +38,7 @@
                               <Font size="18.0" />
                            </font>
                         </Label>
-                        <ComboBox fx:id="cbxTipoMembresia" layoutX="623.0" layoutY="217.0" prefHeight="31.0" prefWidth="153.0" promptText="Tipo de Membresia" />
+                        <ComboBox fx:id="cbxTipoMembresia" layoutX="658.0" layoutY="211.0" prefHeight="31.0" prefWidth="153.0" promptText="Tipo de Membresia" />
                         
                         <TextField fx:id="txtPlaca" layoutX="316.0" layoutY="151.0" prefHeight="31.0" prefWidth="168.0" />
                         <TextField fx:id="txtModelo" layoutX="316.0" layoutY="223.0" prefHeight="31.0" prefWidth="168.0" />
@@ -57,12 +57,18 @@
                               <Font size="18.0" />
                            </font>
                         </Label>
-                        <Label layoutX="505.0" layoutY="219.0" prefHeight="27.0" prefWidth="108.0" text="Membresia">
+                        <Label layoutX="505.0" layoutY="212.0" prefHeight="27.0" prefWidth="108.0" text="Membresia">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Label>
-                        <DatePicker fx:id="cbxFechaInicial" layoutX="623.0" layoutY="154.0" prefHeight="31.0" prefWidth="153.0" />
+                        <DatePicker fx:id="cbxFechaInicial" layoutX="658.0" layoutY="152.0" prefHeight="31.0" prefWidth="153.0" />
+                        <Label layoutX="505.0" layoutY="265.0" prefHeight="27.0" prefWidth="153.0" text="Tipo de Vehiculo">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <ComboBox fx:id="cbxTipoVehiculo" layoutX="658.0" layoutY="264.0" prefHeight="31.0" prefWidth="153.0" promptText="Tipo de Vehiculo" />
                      </children>
                   </Pane>
                </children>
