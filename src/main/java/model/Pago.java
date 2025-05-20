@@ -4,18 +4,19 @@ import java.time.LocalDate;
 
 public class Pago {
 
-	private Parqueadero parqueadero;
+	private String parqueadero;
 	private String placa;
+	private Tarifa tarifa;
 	private TipoMembresia membrecia;
-	private int totalApagar;
-	private LocalDate fecha;
+	private int totalpagar;
+	private LocalDate fechaSalida;
 
-	public Pago(Parqueadero parqueadero, String placa, TipoMembresia membrecia, int totalApagar, LocalDate fecha) {
+	public Pago(String parqueadero, String placa, TipoMembresia membrecia, LocalDate fechaSalida, int totalpagar) {
 		this.parqueadero = parqueadero;
 		this.placa = placa;
 		this.membrecia = membrecia;
-		this.totalApagar = totalApagar;
-		this.fecha = fecha;
+		this.totalpagar = totalpagar;
+		this.fechaSalida = fechaSalida;
 	}
 
 	public String getPlaca() {
@@ -26,21 +27,52 @@ public class Pago {
 		this.placa = placa;
 	}
 
-	public int getTotalApagar() {
-		return totalApagar;
+
+	
+
+	public TipoMembresia getMembrecia() {
+		return membrecia;
 	}
 
-	public void setTotalApagar(int totalApagar) {
-		this.totalApagar = totalApagar;
+	public void setMembrecia(TipoMembresia membrecia) {
+		this.membrecia = membrecia;
 	}
 
-	public LocalDate getFecha() {
-		return fecha;
+	public LocalDate getFechaSalida() {
+		return fechaSalida;
 	}
 
-	public void setFecha(LocalDate fecha) {
-		this.fecha = fecha;
+	public void setFechaSalida(LocalDate fechaSalida) {
+		this.fechaSalida = fechaSalida;
 	}
+
+	public Tarifa getTarifa() {
+		return tarifa;
+	}
+
+	public void setTarifa(Tarifa tarifa) {
+		this.tarifa = tarifa;
+	}
+
+	public int getTotalpagar() {
+		return totalpagar;
+	}
+
+	public void setTotalpagar(int totalpagar) {
+		this.totalpagar = totalpagar;
+	}
+
+	public String getParqueadero() {
+		return parqueadero;
+	}
+
+	public void setParqueadero(String parqueadero) {
+		this.parqueadero = parqueadero;
+	}
+
+	
+
+	
 	
 	
 }
