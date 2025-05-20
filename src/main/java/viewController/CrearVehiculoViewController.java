@@ -60,6 +60,9 @@ public class CrearVehiculoViewController {
     private ComboBox<String> cbxTipoMembresia;
     
     @FXML
+    private ComboBox<String> cbxTipoVehiculo;
+    
+    @FXML
     private DatePicker cbxFechaInicial;
 
     @FXML
@@ -86,6 +89,7 @@ public class CrearVehiculoViewController {
 //    	crearVehiculo = new CrearVehiculo();
     	cbxTipoMembresia.getItems().addAll("MES AUTO", "MES MOTO", "MES CAMION", "TRESMESES AUTO", "TRESMESES MOTO", "TRESMESES CAMION", "AÑO AUTO", "AÑO MOTO", "AÑO CAMION");
     	
+    	cbxTipoVehiculo.getItems().addAll("Moto", "Automovil", "Camion");
 
     	cbxFechaInicial = new DatePicker(LocalDate.now());
     	cbxFechaInicial.setEditable(false);

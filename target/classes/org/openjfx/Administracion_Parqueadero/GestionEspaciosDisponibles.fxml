@@ -6,7 +6,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="viewController.GestionTarifasViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="viewController.GestionEspaciosDisponiblesViewController">
    <children>
       <SplitPane layoutX="6.0" orientation="VERTICAL" prefHeight="500.0" prefWidth="1000.0">
         <items>
@@ -17,37 +17,37 @@
                         <Blend />
                      </effect>
                      <children>
-                        <Label layoutX="233.0" layoutY="29.0" text="Gestion de Tarifas">
+                        <Label layoutX="202.0" layoutY="30.0" text="Gestion de Espacios">
                            <font>
                               <Font name="System Bold" size="64.0" />
                            </font>
                         </Label>
-                        <Label layoutX="276.0" layoutY="153.0" prefHeight="37.0" prefWidth="196.0" text="Tarifa de Moto:">
+                        <Label layoutX="236.0" layoutY="153.0" prefHeight="37.0" prefWidth="196.0" text="Espacios de Moto:">
                            <font>
                               <Font size="24.0" />
                            </font>
                         </Label>
                         
-                        <TextField fx:id="txtTarifaMoto" layoutX="483.0" layoutY="156.0" prefHeight="31.0" prefWidth="168.0" />
-                        <TextField fx:id="txtTarifaCamion" layoutX="483.0" layoutY="248.0" prefHeight="31.0" prefWidth="168.0" />
-                        <TextField fx:id="txtTarifaAuto" layoutX="483.0" layoutY="202.0" prefHeight="31.0" prefWidth="168.0" />
-                        <Button fx:id="btnActualizarVehiculo" layoutX="414.0" layoutY="296.0" mnemonicParsing="false" onAction="#onActualizarVehiculo" text="Actualizar Tarifa" />
+                        <TextField fx:id="txtEspaciosMoto" layoutX="483.0" layoutY="156.0" prefHeight="31.0" prefWidth="168.0" />
+                        <TextField fx:id="txtEspaciosCamion" layoutX="483.0" layoutY="248.0" prefHeight="31.0" prefWidth="168.0" />
+                        <TextField fx:id="txtEspaciosAuto" layoutX="483.0" layoutY="202.0" prefHeight="31.0" prefWidth="168.0" />
+                        <Button fx:id="btnActualizarEspacios" layoutX="414.0" layoutY="296.0" mnemonicParsing="false" onAction="#onActualizarVehiculo" text="Actualizar Espacios" />
                         <Button fx:id="dtnAtras" layoutX="932.0" layoutY="11.0" mnemonicParsing="false" onAction="#onOpenMenu" prefHeight="37.0" prefWidth="44.0" style="-fx-background-color: red; -fx-border-color: black;" text="X" />
-                        <Label layoutX="276.0" layoutY="243.0" prefHeight="37.0" prefWidth="196.0" text="Tarifa de Camion:">
+                        <Label layoutX="236.0" layoutY="243.0" prefHeight="37.0" prefWidth="236.0" text="Espacios de Camion:">
                            <font>
                               <Font size="24.0" />
                            </font>
                         </Label>
-                        <Label layoutX="278.0" layoutY="199.0" prefHeight="37.0" prefWidth="196.0" text="Tarifa de Auto:">
+                        <Label layoutX="236.0" layoutY="199.0" prefHeight="37.0" prefWidth="196.0" text="Espacios de Auto:">
                            <font>
                               <Font size="24.0" />
                            </font>
                         </Label>
-                        <TableView fx:id="tblListGestionTarifas" layoutX="276.0" layoutY="348.0" prefHeight="82.0" prefWidth="400.0">
+                        <TableView fx:id="tblListGestionEspacios" layoutX="276.0" layoutY="348.0" prefHeight="82.0" prefWidth="400.0">
                           <columns>
-                            <TableColumn fx:id="tbcMoto" prefWidth="130.0" text="Tarifa de Moto" />
-                            <TableColumn fx:id="tbcAuto" prefWidth="143.0" text="Tarifa de Auto" />
-                              <TableColumn fx:id="tbcCamion" prefWidth="126.0" text="Tarifa de Camion" />
+                            <TableColumn fx:id="tbcMoto" prefWidth="130.0" text="Espacios de Moto" />
+                            <TableColumn fx:id="tbcAuto" prefWidth="143.0" text="Espacios de Auto" />
+                              <TableColumn fx:id="tbcCamion" prefWidth="126.0" text="Espacios de Camion" />
                           </columns>
                         </TableView>
                      </children>

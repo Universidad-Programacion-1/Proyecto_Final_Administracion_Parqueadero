@@ -8,36 +8,36 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 
-public class GestionTarifasViewController {
+public class GestionEspaciosDisponiblesViewController {
 
 	App app;
 	
     @FXML
-    private TableColumn<?, ?> tbcAuto;
+    private TextField txtEspaciosMoto;
 
     @FXML
     private TableColumn<?, ?> tbcCamion;
 
     @FXML
-    private TextField txtTarifaCamion;
-
-    @FXML
     private Button dtnAtras;
 
     @FXML
-    private Button btnActualizarTarifa;
+    private TableColumn<?, ?> tbcAuto;
 
     @FXML
-    private TextField txtTarifaMoto;
+    private TableView<?> tblListGestionEspacios;
+
+    @FXML
+    private TextField txtEspaciosAuto;
 
     @FXML
     private TableColumn<?, ?> tbcMoto;
 
     @FXML
-    private TextField txtTarifaAuto;
+    private Button btnActualizarEspacios;
 
     @FXML
-    private TableView<?> tblListGestionTarifas;
+    private TextField txtEspaciosCamion;
 
     @FXML
     void onActualizarVehiculo() {
@@ -50,7 +50,8 @@ public class GestionTarifasViewController {
     }
     
     public void setApp(App app) {
-        this.app = app;
+    	 this.app = app;
     }
+
 
 }
