@@ -17,6 +17,16 @@ import viewController.PagosViewController;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
+import java.time.LocalDate;
+
+import model.Automovil;
+import model.EspaciosDisponibles;
+import model.Membresia;
+import model.Pago;
+import model.Parqueadero;
+import model.Tarifa;
+import model.TipoMembresia;
+import model.Vehiculo;
 
 /**
  * JavaFX App
@@ -26,6 +36,7 @@ public class App extends Application {
     private Stage primaryStage;
     @SuppressWarnings("exports")
     private static Scene scene;
+    public static Parqueadero parqueadero = new Parqueadero("Parqueadero al gusto","Fundadores","Carlos Andres Ruiz","123456789");
     
     @Override
     public void start(Stage primaryStage) throws IOException {
@@ -34,7 +45,13 @@ public class App extends Application {
 		GestionarParqueadero();
     }
     
+    public void inicializarData(){
+        EspaciosDisponibles espaciosDisponibles = new EspaciosDisponibles(10, 10, 10);
+        parqueadero.crearEspacipos(espaciosDisponibles);
+    }
+    
     public void GestionarParqueadero() {
+    	inicializarData();
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(App.class.getResource("GestionParqueadero.fxml"));
@@ -76,6 +93,25 @@ public class App extends Application {
             AnchorPane rootLayout = (AnchorPane) loader.load();
             CrearVehiculoViewController crearVehiculo = loader.getController();
             crearVehiculo.setApp(this);
+//=======
+//    public void start(Stage stage) throws IOException {
+//        scene = new Scene(loadFXML("primary"), 640, 480);
+//        stage.setScene(scene);
+//        stage.show();
+//        Parqueadero p= new Parqueadero("EJERCICIO", "CALLE 45", "ALEJO", "1234");
+//        Tarifa t= new Tarifa(0, 0, 0, 0, 1000, 20000, 0, 0, 0, 0, 0, 0);
+//        Membresia membresia = new Membresia(TipoMembresia.MESAUTO,LocalDate.now(), LocalDate.now());
+//        Vehiculo v= new Automovil("DOSPEA", "NEGRO", "ASMNDASF", membresia); 
+//        p.crearTarifa(t);  
+//        System.out.println("VEHICULO"+ p.crearVehiculo(v));
+//        //p.crearVehiculo(v);
+//        Pago pago = p.crearPagoVehiculoMembresia("DOSPEA");
+//        System.out.println(pago.getTotalpagar());
+//        
+//        
+//    }
+//    
+//>>>>>>> c4f33be2f09c9b315691bc0942632660d8b49f72
 
             Scene scene = new Scene(rootLayout);
             primaryStage.setScene(scene);

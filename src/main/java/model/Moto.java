@@ -1,21 +1,16 @@
 package model;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 public class Moto extends Vehiculo{
-
-    private int precio;
-
-    public Moto(String placa, String color, String modelo) {
-        super(placa, color, modelo);
-        this.precio=precio;
+    public Moto(String placa, String color, String modelo, Membresia membresia) {
+        super(placa, color, modelo, membresia);
     }
 
-    public int getPrecio() {
-        return precio;
+    public Moto(String placa, LocalDateTime fechaIngreso) {
+        super(placa, fechaIngreso);
+        
     }
-
-    public void setPrecio(int precio) {
-        this.precio = precio;
-    }
-    
 
 }
