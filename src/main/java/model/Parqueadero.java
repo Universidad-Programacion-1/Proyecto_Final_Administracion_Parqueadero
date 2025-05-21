@@ -59,18 +59,6 @@ public class Parqueadero {
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
-    /* 
-	public boolean crearVehiculo(Vehiculo vehiculo) {
-		System.out.println(vehiculo);
-		boolean centinela = false;
-		if (!verificarVehiculo(vehiculo.getPlaca())) {
-            vehiculos.add(vehiculo);
-            centinela = true;
-		}
-		return centinela;
-		
-    }
-        */
 
     public boolean crearTarifa(Tarifa precio){
         System.out.println(tarifa);
@@ -100,34 +88,31 @@ public class Parqueadero {
         }
         return centinela;
     }
-    public String crearVehiculoTemporal(Vehiculo vehiculo) {
-    for (Vehiculo v : vehiculos) {
-        if (v.getPlaca().equalsIgnoreCase(vehiculo.getPlaca())) {
-            LocalDateTime fechaIngreso = vehiculo.getFechaIngreso(); 
-            // OTRO METODO Duration duracion = Duration.between(fechaIngreso);
-            long horas = duracion.toHours();
-            if (duracion.toMinutes() % 60 != 0) {
-                horas++; 
+    public String crearVehiculoTemporal(Vehiculo vehiculo, String tipoVehiculo) {
+        System.out.println(vehiculo);
+        if (!verificarVehiculo(vehiculo.getPlaca())) {
+            if (tipoVehiculo.equals("Automovil")) {
+                Automovil auto = new Automovil(vehiculo.getPlaca(), LocalDateTime.now());
+                vehiculos.add(auto);
+                restaEspaciosAutomovil();
+            } 
+            if (tipoVehiculo.equals("Moto")) {
+                Moto moto = new Moto(vehiculo.getPlaca(), LocalDateTime.now());
+                vehiculos.add(moto);
+                restaEspaciosMoto();
+            } 
+            if (tipoVehiculo.equals("Camion")) {
+                Camion camion = new Camion(vehiculo.getPlaca(), LocalDateTime.now());
+                vehiculos.add(camion);
+                restaEspaciosCamion();
             }
-
-            int tarifaPorHora = 0;
-            if (vehiculo instanceof Automovil) {
-                tarifaPorHora = tarifa.getPrecioAutomovilHora();
-            } else if (vehiculo instanceof Moto) {
-                tarifaPorHora = tarifa.getPrecioMotoHora();
-            } else if (vehiculo instanceof Camion) {
-                tarifaPorHora = tarifa.getPrecioCamionHora();
+            else { 
+            System.out.println("Tipo de vehículo desconocido.");
             }
-
-            int total = (int) horas * tarifaPorHora;
-            vehiculos.remove(vehiculo);
-
-            return "Vehículo con placa " + placa + " estuvo " + horas + " horas. Total a pagar: $" + total;
+            
         }
+        return tipoVehiculo;
     }
-
-    return "Vehículo no encontrado.";
-}
 
 
     
@@ -141,15 +126,18 @@ public class Parqueadero {
                 Automovil auto = new Automovil(vehiculo.getPlaca(), vehiculo.getColor(),vehiculo.getModelo(), vehiculo.getMembresia());
                 vehiculos.add(auto);
                 restaEspaciosAutomovil();
-
-
-            } else if (tipoVehiculo.equals("Moto")) {
-                tipoVehiculo= "Moto";
-                vehiculos.add(vehiculo);
-            } else if (vehiculo instanceof Camion) {
-            tipoVehiculo= "Camion";
-            vehiculos.add(vehiculo);
-            } else { 
+            } 
+            if (tipoVehiculo.equals("Moto")) {
+                Moto moto = new Moto(vehiculo.getPlaca(), vehiculo.getColor(), vehiculo.getModelo(), vehiculo.getMembresia());
+                vehiculos.add(moto);
+                restaEspaciosMoto();
+            } 
+            if (tipoVehiculo.equals("Camion")) {
+                Camion camion = new Camion(vehiculo.getPlaca(), vehiculo.getColor(), vehiculo.getModelo(), vehiculo.getMembresia());
+                vehiculos.add(camion);
+                restaEspaciosCamion();
+            }
+            else { 
             System.out.println("Tipo de vehículo desconocido.");
             }
             
@@ -180,7 +168,7 @@ public class Parqueadero {
                     System.out.println("Tipo de Vehiculo"+ vehiculo.getMembresia().getTipoMembresia());
                     System.out.println("Tipo de membresia"+ TipoMembresia.MESCAMION);
                     if(vehiculo.getMembresia().getTipoMembresia()==TipoMembresia.MESCAMION){
-                        pago = new Pago(getNombre(),vehiculo.getPlaca(),, null, espaciosTotal)
+                        pago = new Pago(getNombre(),vehiculo.getPlaca(),vehiculo.getMembresia().getTipoMembresia(), LocalDate.now(), tarifa.getPrecioMotoMes());
                     }
                 }
             }
@@ -188,14 +176,6 @@ public class Parqueadero {
         return pago;
 
     }
-    
-    //public boolean CobrarVehiculoMembresia(Vehiculo vehiculo, Tarifa tarifa){
-    //    boolean centinela = false;
-        //if(){
-
-        //}
-
-    //}
 	public boolean actualizarVehiculo(String placa, Vehiculo actualizado) {
         boolean centinela = false;
         for (Vehiculo vehiculo : vehiculos) {
@@ -209,7 +189,6 @@ public class Parqueadero {
         }
         return centinela;
     }
-
     public boolean restaEspaciosAutomovil(){
         int espacios = espaciosDisponibles.getEspaciosAutomovil();
         boolean centinela = false;
@@ -222,42 +201,30 @@ public class Parqueadero {
         }
         return centinela;
     }
-
-    
-	//public boolean eliminarAutomovil(String placa) {
-    //    boolean centinela = false;
-    //    for (Automovil automovil : automoviles) {
-    //        if (automovil.getPlaca().equals(placa)) {
-    //            automoviles.remove(automovil);
-    //            centinela = true;
-    //            break;
-    //        }
-    //    }
-    //    return centinela;
-    //}
-	//public boolean verificarAutomovil(String placa) {
-    //    boolean centinela = false;
-    //    for (Automovil automovil : automoviles) {
-    //        if (automovil.getPlaca().equals(placa)) {
-    //            centinela = true;
-    //        }
-    //    }
-    //    return centinela;
-    //}
-	//public boolean actualizarAutomovil(String placa, Automovil actualizado) {
-    //    boolean centinela = false;
-    //    for (Automovil automovil : automoviles) {
-    //        if (automovil.getPlaca().equals(placa)) {
-    //            automovil.setPlaca(actualizado.getPlaca());
-    //            automovil.setColor(actualizado.getColor());
-    //            automovil.setModelo(actualizado.getModelo());
-    //            automovil.setPrecio(actualizado.getPrecio());
-    //            centinela = true;
-    //            break;
-    //        }
-    //    }
-    //    return centinela;
-    //}
+    public boolean restaEspaciosMoto(){
+        int espacios = espaciosDisponibles.getEspaciosMoto();
+        boolean centinela = false;
+        if(espacios != 0){
+            espaciosDisponibles.setEspaciosMoto(espacios-1);
+            centinela = true;
+        }
+        else{
+            System.out.println("NO HAY ESPACIOS DISPONIBLES");
+        }
+        return centinela;
+    }
+    public boolean restaEspaciosCamion(){
+        int espacios = espaciosDisponibles.getEspaciosCamion();
+        boolean centinela = false;
+        if(espacios != 0){
+            espaciosDisponibles.setEspaciosCamion(espacios-1);
+            centinela = true;
+        }
+        else{
+            System.out.println("NO HAY ESPACIOS DISPONIBLES");
+        }
+        return centinela;
+    }
 	
     
 

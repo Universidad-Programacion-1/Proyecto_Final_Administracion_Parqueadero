@@ -10,6 +10,7 @@ public class Vehiculo {
 	private String color;
 	private String modelo;
 	private LocalDateTime fechaIngreso;
+
 	public Vehiculo(String placa, String color, String modelo, Membresia membresia) {
 		this.placa = placa;
 		this.color = color;

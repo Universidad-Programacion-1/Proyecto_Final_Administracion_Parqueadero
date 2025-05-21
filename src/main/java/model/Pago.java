@@ -9,14 +9,14 @@ public class Pago {
 	private Tarifa tarifa;
 	private TipoMembresia membrecia;
 	private int totalpagar;
-	private LocalDate fechaSalida;
+	private LocalDate fechaEntrada;
 
-	public Pago(String parqueadero, String placa, TipoMembresia membrecia, LocalDate fechaSalida, int totalpagar) {
+	public Pago(String parqueadero, String placa, TipoMembresia membrecia, LocalDate fechaEntrada, int totalpagar) {
 		this.parqueadero = parqueadero;
 		this.placa = placa;
 		this.membrecia = membrecia;
 		this.totalpagar = totalpagar;
-		this.fechaSalida = fechaSalida;
+		this.fechaEntrada = fechaEntrada;
 	}
 
 	public String getPlaca() {
@@ -36,14 +36,6 @@ public class Pago {
 
 	public void setMembrecia(TipoMembresia membrecia) {
 		this.membrecia = membrecia;
-	}
-
-	public LocalDate getFechaSalida() {
-		return fechaSalida;
-	}
-
-	public void setFechaSalida(LocalDate fechaSalida) {
-		this.fechaSalida = fechaSalida;
 	}
 
 	public Tarifa getTarifa() {
@@ -68,6 +60,14 @@ public class Pago {
 
 	public void setParqueadero(String parqueadero) {
 		this.parqueadero = parqueadero;
+	}
+
+	public LocalDate getFechaEntrada() {
+		return fechaEntrada;
+	}
+
+	public void setFechaEntrada(LocalDate fechaEntrada) {
+		this.fechaEntrada = fechaEntrada;
 	}
 
 	

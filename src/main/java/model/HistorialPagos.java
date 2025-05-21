@@ -4,10 +4,10 @@ import java.time.LocalDate;
 
 public class HistorialPagos {
 	
-	private Pago pagos;
+	private Pago pago;
 	private LocalDate fecha;
-	public HistorialPagos(Pago pagos, LocalDate fecha) {
-		this.pagos = pagos;
+	public HistorialPagos(Pago pago, LocalDate fecha) {
+		this.pago = pago;
 		this.fecha = fecha;
 	}
 	public LocalDate getFecha() {
