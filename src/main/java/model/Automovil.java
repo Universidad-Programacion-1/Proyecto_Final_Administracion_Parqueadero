@@ -1,12 +1,12 @@
 package model;
 
-public class Moto extends Vehiculo{
-
+public class Automovil extends Vehiculo{
     private int precio;
 
-    public Moto(String placa, String color, String modelo) {
+	public Automovil(String placa,int precio, String color, String modelo) {
         super(placa, color, modelo);
         this.precio=precio;
+        
     }
 
     public int getPrecio() {
@@ -16,6 +16,8 @@ public class Moto extends Vehiculo{
     public void setPrecio(int precio) {
         this.precio = precio;
     }
+    
+
     
 
 }
