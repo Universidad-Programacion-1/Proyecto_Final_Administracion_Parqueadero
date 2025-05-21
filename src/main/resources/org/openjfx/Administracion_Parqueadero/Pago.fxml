@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="675.0" prefWidth="765.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="viewController.PagosViewController">
+   <children>
+      <Label layoutX="179.0" layoutY="14.0" text="Realizar Pago">
+         <font>
+            <Font name="System Bold" size="64.0" />
+         </font>
+      </Label>
+      <Label layoutX="136.0" layoutY="165.0" prefHeight="37.0" prefWidth="196.0" text="Placa:">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="136.0" layoutY="227.0" prefHeight="37.0" prefWidth="220.0" text="Tipo de Membresia:">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="136.0" layoutY="291.0" prefHeight="37.0" prefWidth="196.0" text="Total Apagar:">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="136.0" layoutY="352.0" prefHeight="37.0" prefWidth="196.0" text="Fecha:">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Button fx:id="dtnAtras" layoutX="701.0" layoutY="14.0" mnemonicParsing="false" onAction="#onOpenMenu" prefHeight="37.0" prefWidth="44.0" style="-fx-background-color: red; -fx-border-color: black;" text="X" />
+      <Label fx:id="labelPlaca" layoutX="383.0" layoutY="165.0" prefHeight="37.0" prefWidth="196.0">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelTipoMembresia" layoutX="383.0" layoutY="227.0" prefHeight="37.0" prefWidth="220.0">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelTotalApagar" layoutX="383.0" layoutY="291.0" prefHeight="37.0" prefWidth="196.0">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelFecha" layoutX="383.0" layoutY="352.0" prefHeight="37.0" prefWidth="196.0">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

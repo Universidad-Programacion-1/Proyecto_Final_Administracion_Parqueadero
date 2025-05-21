@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="859.0" prefWidth="1202.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="viewController.CrearVehiculoViewController">
+   <children>
+      <SplitPane dividerPositions="0.4088200238379023" layoutX="6.0" orientation="VERTICAL" prefHeight="841.0" prefWidth="1183.0">
+        <items>
+          <AnchorPane maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="300.0" prefWidth="500.0">
+               <children>
+                  <Pane layoutX="154.0" layoutY="14.0" prefHeight="500.0" prefWidth="929.0" style="-fx-border-image-width: 1px;">
+                     <effect>
+                        <Blend />
+                     </effect>
+                     <children>
+                        <Label layoutX="188.0" layoutY="14.0" text="Menu Parqueadero">
+                           <font>
+                              <Font name="System Bold" size="64.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="188.0" layoutY="227.0" prefHeight="17.0" prefWidth="64.0" text="Placa:">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        
+                              <TextField fx:id="txtPlaca" layoutX="265.0" layoutY="225.0" prefHeight="31.0" prefWidth="168.0" />
+                        <Button fx:id="btnActualizarVehiculo" layoutX="555.0" layoutY="310.0" mnemonicParsing="false" onAction="#onActualizarVehiculo" text="Pago Vehiculo" />
+                        <Button fx:id="btbAgregarVehiculo" layoutX="265.0" layoutY="310.0" mnemonicParsing="false" onAction="#onAgregarVehiculo" text="Agregar Vehiculo" />
+                        <Button fx:id="dtnAtras" layoutX="871.0" layoutY="14.0" mnemonicParsing="false" onAction="#onOpenMenu" prefHeight="37.0" prefWidth="44.0" style="-fx-background-color: red; -fx-border-color: black;" text="X" />
+                        <TextField fx:id="txtFecha" layoutX="592.0" layoutY="225.0" prefHeight="31.0" prefWidth="168.0" />
+                        <Label layoutX="265.0" layoutY="116.0" prefHeight="49.0" prefWidth="211.0" text="Espacios disponibles:">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="465.0" layoutY="116.0" prefHeight="49.0" prefWidth="211.0" text="Numero" textOverrun="LEADING_ELLIPSIS">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="507.0" layoutY="227.0" prefHeight="17.0" prefWidth="64.0" text="Fecha">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+               </children>
+            </AnchorPane>
+          <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="0.0" minWidth="0.0" prefHeight="407.0" prefWidth="1181.0">
+               <children>
+                  <TableView fx:id="tblListVehiculos" layoutX="348.0" layoutY="37.0" prefHeight="248.0" prefWidth="488.0">
+                    <columns>
+                      <TableColumn fx:id="tbcPlaca" prefWidth="247.0" text="Placa" />
+                        <TableColumn fx:id="tbcHoraInicio" minWidth="4.0" prefWidth="240.0" text="Hora de Inicio" />
+                    </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>

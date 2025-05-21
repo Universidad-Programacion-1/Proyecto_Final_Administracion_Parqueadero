@@ -1,4 +1,4 @@
-package controller;
+package viewController;
 
 import org.openjfx.Administracion_Parqueadero.App;
 
@@ -61,7 +61,7 @@ public class CrearClienteViewController {
 
     @FXML
     void onOpenMenu( ) {
-
+    	app.GestionarParqueadero();
    }
     
    public void setApp(App app) {
