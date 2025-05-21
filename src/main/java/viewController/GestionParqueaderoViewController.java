@@ -22,19 +22,22 @@ public class GestionParqueaderoViewController {
     private Button btHistorialPagos;
     
     @FXML
-    private Button btGestioEspacios;
+    private Button btGestionEspacios;
 
     @FXML
-    private Button btGestioCliente;
+    private Button btGestionCliente;
 
     @FXML
-    private Button btGestioTarifas;
+    private Button btGestionTarifas;
 
     @FXML
     private Label txtTitleVehiculos;
 
     @FXML
-    private Button btGestioVehiculos;
+    private Button btGestionVehiculos;
+    
+    @FXML
+    private Button btGestionParqueadero;
 
     @FXML
     void onOpenCrudTarifas() {
@@ -64,6 +67,11 @@ public class GestionParqueaderoViewController {
     @FXML
     void onOpenCrudEspacios() {
     	app.GestionEspaciosDisponibles();
+    }
+    
+    @FXML
+    void onOpenGestionParqueadero() {
+    	app.GestionMenuParqueadero();
     }
 
     public void setApp(App app) {

@@ -12,36 +12,41 @@
 
 <VBox alignment="CENTER" prefHeight="470.0" prefWidth="458.0" spacing="20.0" style="-fx-border-color: black; -fx-border-width: 5;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="viewController.GestionParqueaderoViewController">
    <children>
-      <Label fx:id="txtTitleVehiculos" graphicTextGap="5.0" prefHeight="43.0" prefWidth="335.0" text="Bienvenidos a Geston de Parqueadero" textAlignment="CENTER">
+      <Label fx:id="txtTitleVehiculos" graphicTextGap="5.0" prefHeight="43.0" prefWidth="335.0" text="Bienvenidos a Gestion de Parqueadero" textAlignment="CENTER">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
       <Pane prefHeight="318.0" prefWidth="362.0" style="-fx-background-radius: blue;">
          <children>
-            <Button fx:id="btGestioTarifas" layoutX="127.0" layoutY="14.0" onAction="#onOpenCrudTarifas" prefHeight="33.0" prefWidth="161.0" style="-fx-border-color: black;" text="Gestión de Tarifas">
+            <Button fx:id="btGestionTarifas" layoutX="123.0" layoutY="55.0" onAction="#onOpenCrudTarifas" prefHeight="33.0" prefWidth="161.0" style="-fx-border-color: black;" text="Gestión de Tarifas">
                <font>
                   <Font size="15.0" />
                </font></Button>
-            <Button fx:id="btGestioCliente" layoutX="127.0" layoutY="56.0" onAction="#onOpenCrudCliente" prefHeight="33.0" prefWidth="161.0" style="-fx-border-color: black;" text="Gestión de Clientes">
+            <Button fx:id="btGestionCliente" layoutX="123.0" layoutY="97.0" onAction="#onOpenCrudCliente" prefHeight="33.0" prefWidth="161.0" style="-fx-border-color: black;" text="Gestión de Clientes">
                <font>
                   <Font size="15.0" />
                </font></Button>
-            <Button fx:id="btGestioEspacios" layoutX="128.0" layoutY="143.0" onAction="#onOpenCrudEspacios" prefHeight="33.0" prefWidth="161.0" style="-fx-border-color: black;" text="Gestión de Espacios">
+            <Button fx:id="btGestionEspacios" layoutX="124.0" layoutY="184.0" onAction="#onOpenCrudEspacios" prefHeight="33.0" prefWidth="161.0" style="-fx-border-color: black;" text="Gestión de Espacios">
                <font>
                   <Font size="15.0" />
                </font></Button>
-            <Button fx:id="btGestioVehiculos" layoutX="128.0" layoutY="97.0" onAction="#onOpenCrudVehiculos" style="-fx-border-color: black;" text="Gestión de Vehiculos">
+            <Button fx:id="btGestionVehiculos" layoutX="124.0" layoutY="138.0" onAction="#onOpenCrudVehiculos" style="-fx-border-color: black;" text="Gestión de Vehiculos">
                <font>
                   <Font size="15.0" />
                </font>
             </Button>
-            <Button fx:id="btRealizarpagp" layoutX="128.0" layoutY="188.0" onAction="#onOpenPagos" prefHeight="33.0" prefWidth="161.0" style="-fx-border-color: black;" text="Realizar Pago">
+            <Button fx:id="btRealizarpagp" layoutX="124.0" layoutY="229.0" onAction="#onOpenPagos" prefHeight="33.0" prefWidth="161.0" style="-fx-border-color: black;" text="Realizar Pago">
                <font>
                   <Font size="15.0" />
                </font>
             </Button>
-            <Button fx:id="btHistorialPagos" layoutX="128.0" layoutY="230.0" onAction="#onOpenHistorialPagos" prefHeight="33.0" prefWidth="161.0" style="-fx-border-color: black;" text="Historial de Pagos">
+            <Button fx:id="btHistorialPagos" layoutX="124.0" layoutY="271.0" onAction="#onOpenHistorialPagos" prefHeight="33.0" prefWidth="161.0" style="-fx-border-color: black;" text="Historial de Pagos">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="btGestionParqueadero" layoutX="111.0" layoutY="14.0" onAction="#onOpenGestionParqueadero" prefHeight="33.0" prefWidth="188.0" style="-fx-border-color: black;" text="Gestion de Parqueadero">
                <font>
                   <Font size="15.0" />
                </font>

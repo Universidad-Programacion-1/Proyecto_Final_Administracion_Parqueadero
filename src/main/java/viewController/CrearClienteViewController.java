@@ -48,6 +48,12 @@ public class CrearClienteViewController {
 
     @FXML
     private TableColumn<?, ?> tbcCorreo;
+    
+    @FXML
+    private TextField txtPlaca;
+    
+    @FXML
+    private TableColumn<?, ?> tbcPlaca;
 
     @FXML
     void onActualizarCliente( ) {

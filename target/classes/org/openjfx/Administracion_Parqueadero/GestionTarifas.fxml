@@ -6,11 +6,11 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="705.0" prefWidth="1153.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="viewController.GestionTarifasViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="705.0" prefWidth="1104.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="viewController.GestionTarifasViewController">
    <children>
       <SplitPane layoutX="-14.0" layoutY="-33.0" orientation="VERTICAL" prefHeight="726.0" prefWidth="1171.0">
          <items>
-            <Pane prefHeight="692.0" prefWidth="1169.0" style="-fx-border-image-width: 1px;">
+            <Pane prefHeight="724.0" prefWidth="1140.0" style="-fx-border-image-width: 1px;">
                <effect>
                   <Blend />
                </effect>

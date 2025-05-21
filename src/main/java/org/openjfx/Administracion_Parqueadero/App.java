@@ -12,6 +12,7 @@ import viewController.GestionEspaciosDisponiblesViewController;
 import viewController.GestionParqueaderoViewController;
 import viewController.GestionTarifasViewController;
 import viewController.HistorialPagosViewController;
+import viewController.MenuParqueaderoViewController;
 import viewController.PagosViewController;
 import javafx.scene.layout.AnchorPane;
 
@@ -144,6 +145,23 @@ public class App extends Application {
             AnchorPane rootLayout = (AnchorPane) loader.load();
             HistorialPagosViewController historialPagos = loader.getController();
             historialPagos.setApp(this);
+
+            Scene scene = new Scene(rootLayout);
+            primaryStage.setScene(scene);
+            primaryStage.show();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+    
+    public void GestionMenuParqueadero() {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(App.class.getResource("MenuParqueadero.fxml"));
+            AnchorPane rootLayout = (AnchorPane) loader.load();
+            MenuParqueaderoViewController menuParqueadero = loader.getController();
+            menuParqueadero.setApp(this);
 
             Scene scene = new Scene(rootLayout);
             primaryStage.setScene(scene);

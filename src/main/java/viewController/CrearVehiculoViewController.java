@@ -29,8 +29,6 @@ public class CrearVehiculoViewController {
     @FXML
     private Button btnActualizarVehiculo;
 
-    @FXML
-    private TextField txtCliente;
 
     @FXML
     private TextField txtPlaca;
