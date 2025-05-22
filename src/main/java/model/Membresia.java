@@ -24,6 +24,13 @@ public class Membresia {
 	public void setFinMembresia(LocalDate finMembresia) {
 		this.finMembresia = finMembresia;
 	}
+	public TipoMembresia getTipoMembresia() {
+		return TipoMembresia;
+	}
+	public void setTipoMembresia(TipoMembresia tipoMembresia) {
+		TipoMembresia = tipoMembresia;
+	}
+	
 
 	
 

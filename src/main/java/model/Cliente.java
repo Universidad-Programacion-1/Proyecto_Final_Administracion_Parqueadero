@@ -7,7 +7,7 @@ public class Cliente {
 	private String telefono;
 	private String correo;
 	private String placa;
-	
+
 	public Cliente(String nombre, String cedula, String telefono, String correo, String placa) {
 		this.nombre = nombre;
 		this.cedula = cedula;
@@ -39,13 +39,14 @@ public class Cliente {
 	public void setCorreo(String correo) {
 		this.correo = correo;
 	}
-	
+
 	public String getPlaca() {
 		return placa;
 	}
 	public void setPlaca(String placa) {
 		this.placa = placa;
 	}
+
 
 	
 }
