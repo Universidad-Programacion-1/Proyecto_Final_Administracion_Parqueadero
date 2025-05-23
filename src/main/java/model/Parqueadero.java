@@ -15,8 +15,8 @@ public class Parqueadero {
 	private Tarifa tarifa;
 	private Pago pago;
     private EspaciosDisponibles espaciosDisponibles;
-	private Collection<Vehiculo> vehiculos;
-	private Collection<Cliente> clientes;
+    private Collection<Cliente> listaClientes;
+	private Collection<Vehiculo> listaVehiculos;
 	private String direccion;
 	private String representante;
 	private String telefono;
@@ -25,7 +25,8 @@ public class Parqueadero {
 	public Parqueadero(String nombre, String direccion, String representante, String telefono) {
 		this.nombre = nombre;
 		this.direccion = direccion;
-        vehiculos = new LinkedList<>();
+		 this.listaClientes = new LinkedList<>();
+        this.listaVehiculos = new LinkedList<>();
 		this.representante = representante;
 		this.telefono = telefono;
 	}
@@ -63,11 +64,10 @@ public class Parqueadero {
 	}
 	
 	public boolean actualizarCliente(String cedula, Cliente actualizado) {
-        boolean centinela = false;
-        for (Cliente cliente : clientes) {
+        boolean centinela = false;       
+        for (Cliente cliente : listaClientes) {   
             if (cliente.getCedula().equals(cedula)) {
             	cliente.setNombre(actualizado.getNombre());
-            	cliente.setCedula(actualizado.getCedula());
             	cliente.setTelefono(actualizado.getTelefono());
             	cliente.setCorreo(actualizado.getCorreo());
             	cliente.setPlaca(actualizado.getPlaca());
@@ -80,9 +80,9 @@ public class Parqueadero {
 				
 	public boolean eliminarCliente(String cedula) {
         boolean centinela = false;
-        for (Cliente cliente : clientes) {
+        for (Cliente cliente : listaClientes) {
             if (cliente.getCedula().equals(cedula)) {
-            	clientes.remove(cliente);
+            	listaClientes.remove(cliente);
                 centinela = true;
                 break;
             }
@@ -92,7 +92,7 @@ public class Parqueadero {
 	
 	
 	public Cliente buscarCliente (String cedula) {
-		for(Cliente cliente : clientes) {
+		for(Cliente cliente : listaClientes) {
 			 if (cliente.getCedula().equals(cedula)) {
 				 return cliente;
 			 }
@@ -102,7 +102,7 @@ public class Parqueadero {
 	
 	public boolean verificarCliente(String cedula) {
         boolean centinela = false;
-        for (Cliente cliente : clientes) {
+        for (Cliente cliente : listaClientes) {
             if (cliente.getCedula().equals(cedula)) {
                 centinela = true;
             }
@@ -110,17 +110,51 @@ public class Parqueadero {
         return centinela;
     }
 	
-	public boolean crerCliente(Cliente cliente) {
+	public boolean crearCliente(Cliente cliente) {
 		boolean centinela = false;
 		if (!verificarCliente(cliente.getCedula())) {
-			clientes.add(cliente);
-						
-			centinela = true;
+			if (verificarExistenciaVehiculo(cliente.getPlaca())) {
+				listaClientes.add(cliente);
+				
+				centinela = true;
+			}
+			
+		}
+		return centinela;
+	}
+	
+	public boolean verificarExistenciaVehiculo(String placa) {
+		boolean centinela = false;
+		for (Vehiculo vehiculo : listaVehiculos) {
+			if (vehiculo.getPlaca().equals(placa)) {
+				
+				centinela = true;
+			}			
 		}
 		return centinela;
 	}
 
-    public boolean crearTarifa(Tarifa precio){
+	public Collection<Cliente> getListaClientes() {
+		return listaClientes;
+	}
+	
+	public void setListaClientes(Collection<Cliente> listaClientes) {
+		this.listaClientes = listaClientes;
+	}
+	
+	public Collection<Vehiculo> getListaVehiculos() {
+		return listaVehiculos;
+	}
+
+	public void setListaVehiculos(Collection<Vehiculo> listaVehiculos) {
+		this.listaVehiculos = listaVehiculos;
+	}
+	
+	public void crearEspacipos(EspaciosDisponibles espaciosDisponibles) {
+		this.espaciosDisponibles = espaciosDisponibles;
+	}
+
+	public boolean crearTarifa(Tarifa precio){
         System.out.println(tarifa);
         boolean centinela = false;
         this.tarifa = precio;
@@ -130,9 +164,9 @@ public class Parqueadero {
 
 	public boolean eliminarVehiculo(String placa) {
         boolean centinela = false;
-        for (Vehiculo vehiculo : vehiculos) {
+        for (Vehiculo vehiculo : listaVehiculos) {
             if (vehiculo.getPlaca().equals(placa)) {
-                vehiculos.remove(vehiculo);
+            	listaVehiculos.remove(vehiculo);
                 centinela = true;
                 break;
             }
@@ -141,73 +175,81 @@ public class Parqueadero {
     }
 	public boolean verificarVehiculo(String placa) {
         boolean centinela = false;
-        for (Vehiculo vehiculo : vehiculos) {
+        for (Vehiculo vehiculo : listaVehiculos) {
             if (vehiculo.getPlaca().equals(placa)) {
                 centinela = true;
             }
         }
         return centinela;
     }
-    public String crearVehiculoTemporal(Vehiculo vehiculo, String tipoVehiculo) {
+    public boolean crearVehiculoTemporal(Vehiculo vehiculo, String tipoVehiculo) {
+    	boolean centinela = false;
         System.out.println(vehiculo);
         if (!verificarVehiculo(vehiculo.getPlaca())) {
             if (tipoVehiculo.equals("Automovil")) {
                 Automovil auto = new Automovil(vehiculo.getPlaca(), LocalDateTime.now());
-                vehiculos.add(auto);
+                listaVehiculos.add(auto);
                 restaEspaciosAutomovil();
+                centinela = true;
             } 
             if (tipoVehiculo.equals("Moto")) {
                 Moto moto = new Moto(vehiculo.getPlaca(), LocalDateTime.now());
-                vehiculos.add(moto);
+                listaVehiculos.add(moto);
                 restaEspaciosMoto();
+                centinela = true;
             } 
             if (tipoVehiculo.equals("Camion")) {
                 Camion camion = new Camion(vehiculo.getPlaca(), LocalDateTime.now());
-                vehiculos.add(camion);
+                listaVehiculos.add(camion);
                 restaEspaciosCamion();
+                centinela = true;
             }
             else { 
             System.out.println("Tipo de vehículo desconocido.");
             }
             
         }
-        return tipoVehiculo;
+        return centinela;
     }
 
 
     
-    public String crearVehiculoMembresia(Vehiculo vehiculo, String tipoVehiculo) {
+    public boolean crearVehiculoMembresia(Vehiculo vehiculo, String tipoVehiculo) {
         System.out.println(vehiculo);
-        //boolean centinela = false;
+        System.out.println("Espacios"+ espaciosDisponibles.getEspaciosAutomovil());
+        boolean centinela = false;
         if (!verificarVehiculo(vehiculo.getPlaca())) {
             //vehiculos.add(vehiculo);
         // Identificar el tipo de vehículo
             if (tipoVehiculo.equals("Automovil")) {
                 Automovil auto = new Automovil(vehiculo.getPlaca(), vehiculo.getColor(),vehiculo.getModelo(), vehiculo.getMembresia());
-                vehiculos.add(auto);
+                listaVehiculos.add(auto);
                 restaEspaciosAutomovil();
+                centinela = true;
             } 
             if (tipoVehiculo.equals("Moto")) {
                 Moto moto = new Moto(vehiculo.getPlaca(), vehiculo.getColor(), vehiculo.getModelo(), vehiculo.getMembresia());
-                vehiculos.add(moto);
+                listaVehiculos.add(moto);
                 restaEspaciosMoto();
+                centinela = true;
             } 
             if (tipoVehiculo.equals("Camion")) {
                 Camion camion = new Camion(vehiculo.getPlaca(), vehiculo.getColor(), vehiculo.getModelo(), vehiculo.getMembresia());
-                vehiculos.add(camion);
+                listaVehiculos.add(camion);
                 restaEspaciosCamion();
+                centinela = true;
             }
             else { 
             System.out.println("Tipo de vehículo desconocido.");
             }
             
         }
-        return tipoVehiculo;
+        return centinela;
     }
 
     public Pago crearPagoVehiculoMembresia(String placa){
         Pago pago = null;
-        for(Vehiculo vehiculo : vehiculos){
+        for(Vehiculo vehiculo : listaVehiculos){
             if(vehiculo.getPlaca().equals(placa)){
                 System.out.println("si entro");
                 if (vehiculo instanceof Automovil){
@@ -238,7 +280,7 @@ public class Parqueadero {
     }
 	public boolean actualizarVehiculo(String placa, Vehiculo actualizado) {
         boolean centinela = false;
-        for (Vehiculo vehiculo : vehiculos) {
+        for (Vehiculo vehiculo : listaVehiculos) {
             if (vehiculo.getPlaca().equals(placa)) {
                 vehiculo.setPlaca(actualizado.getPlaca());
                 vehiculo.setColor(actualizado.getColor());

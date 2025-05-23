@@ -7,7 +7,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="859.0" prefWidth="1202.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="viewController.CrearVehiculoViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="859.0" prefWidth="1202.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="viewController.MenuParqueaderoViewController">
    <children>
       <SplitPane dividerPositions="0.4088200238379023" layoutX="6.0" orientation="VERTICAL" prefHeight="841.0" prefWidth="1183.0">
         <items>
@@ -23,17 +23,16 @@
                               <Font name="System Bold" size="64.0" />
                            </font>
                         </Label>
-                        <Label layoutX="188.0" layoutY="227.0" prefHeight="17.0" prefWidth="64.0" text="Placa:">
+                        <Label layoutX="188.0" layoutY="191.0" prefHeight="17.0" prefWidth="64.0" text="Placa:">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Label>
                         
-                              <TextField fx:id="txtPlaca" layoutX="265.0" layoutY="225.0" prefHeight="31.0" prefWidth="168.0" />
+                              <TextField fx:id="txtPlaca" layoutX="265.0" layoutY="189.0" prefHeight="31.0" prefWidth="168.0" />
                         <Button fx:id="btnActualizarVehiculo" layoutX="555.0" layoutY="310.0" mnemonicParsing="false" onAction="#onActualizarVehiculo" text="Pago Vehiculo" />
                         <Button fx:id="btbAgregarVehiculo" layoutX="265.0" layoutY="310.0" mnemonicParsing="false" onAction="#onAgregarVehiculo" text="Agregar Vehiculo" />
                         <Button fx:id="dtnAtras" layoutX="871.0" layoutY="14.0" mnemonicParsing="false" onAction="#onOpenMenu" prefHeight="37.0" prefWidth="44.0" style="-fx-background-color: red; -fx-border-color: black;" text="X" />
-                        <TextField fx:id="txtFecha" layoutX="592.0" layoutY="225.0" prefHeight="31.0" prefWidth="168.0" />
                         <Label layoutX="265.0" layoutY="116.0" prefHeight="49.0" prefWidth="211.0" text="Espacios disponibles:">
                            <font>
                               <Font size="18.0" />
@@ -44,11 +43,18 @@
                               <Font name="System Bold" size="18.0" />
                            </font>
                         </Label>
-                        <Label layoutX="507.0" layoutY="227.0" prefHeight="17.0" prefWidth="64.0" text="Fecha">
+                        <Label layoutX="181.0" layoutY="237.0" prefHeight="17.0" prefWidth="64.0" text="Fecha">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Label>
+                        <ComboBox fx:id="cbxTipoVehiculo" layoutX="611.0" layoutY="216.0" prefHeight="31.0" prefWidth="153.0" promptText="Tipo de Vehiculo" />
+                        <Label layoutX="448.0" layoutY="218.0" prefHeight="27.0" prefWidth="153.0" text="Tipo de Vehiculo">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <DatePicker fx:id="cbxFechaInicial" layoutX="266.0" layoutY="235.0" prefHeight="31.0" prefWidth="168.0" />
                      </children>
                   </Pane>
                </children>

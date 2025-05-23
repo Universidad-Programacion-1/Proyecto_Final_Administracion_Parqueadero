@@ -9,9 +9,6 @@ public class Vehiculo {
 	private String placa;
 	private String color;
 	private String modelo;
-
-	
-
 	private LocalDateTime fechaIngreso;
 
 	public Vehiculo(String placa, String color, String modelo, Membresia membresia) {
