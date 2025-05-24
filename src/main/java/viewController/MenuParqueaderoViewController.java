@@ -43,11 +43,14 @@ public class MenuParqueaderoViewController {
     private Button dtnAtras;
 
     @FXML
-    private Button btnActualizarVehiculo;
+    private Button btnPagoVehiculoMembresia;
 
     @FXML
     private Button btbAgregarVehiculo;
 
+    @FXML
+    private Button btnPagoVehiculoTemporal;
+    
     @FXML
     private ComboBox<String> cbxTipoVehiculo;
 
@@ -62,8 +65,13 @@ public class MenuParqueaderoViewController {
     
 
     @FXML
-    void onPagoVehiculo() {
-    	PagoVehiculo();
+    void onPagoVehiculoTemporal() {
+    	PagoVehiculoTemporal();
+    }
+    
+    @FXML
+    void onPagoVehiculoMembresia() {
+    	PagoVehiculoMembresia();
     }
 
     @FXML
@@ -110,7 +118,6 @@ public class MenuParqueaderoViewController {
 	
 	private void initDataBinding() {
         tbcPlaca.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getPlaca()));
-//        tbcTipoMembresia.setCellValueFactory(cellData -> new SimpleObjectProperty(cellData.getValue().getMembresia().getTipoMembresia()));
         
         tbcTipoMembresia.setCellValueFactory(cellData -> {
             var membresia = cellData.getValue().getMembresia();
@@ -134,19 +141,6 @@ public class MenuParqueaderoViewController {
             }
         });
     }
-	
-//	private boolean veificarFecha() {
-//		boolean centinela = false;
-//		tbcHoraInicio.setCellValueFactory(cellData -> new SimpleObjectProperty(cellData.getValue().getMembresia().getInicioMembresia()));
-//		
-//			if(vehiculo.getMembresia().getInicioMembresia() != null) {
-//				
-//			}
-//			
-//		}
-//		
-//		return centinela;
-//	}
 	
 	private void obtenerVehiculo() {
         listVehiculos.addAll(menuParqueaderoController.obtenerListaVehiculos());
@@ -191,9 +185,19 @@ public class MenuParqueaderoViewController {
         return vehiculo;
     }
     
-    private void PagoVehiculo() {
+    private void PagoVehiculoMembresia() {
     	
     	Pago pago = menuParqueaderoController.pagoVehiculoMembresia(selectedVehiculo.getPlaca());
+    	System.out.println("Pago desde menu"+ pago.getTotalpagar());
+    	app.Pagos(pago);
+        tblListVehiculos.refresh();
+        limpiarSeleccion();
+        limpiarCamposVehiculo();
+    }
+    
+    private void PagoVehiculoTemporal() {
+    	
+    	Pago pago = menuParqueaderoController.pagoVehiculoTemporal(selectedVehiculo.getPlaca());
     	System.out.println("Pago desde menu"+ pago.getTotalpagar());
     	app.Pagos(pago);
         tblListVehiculos.refresh();

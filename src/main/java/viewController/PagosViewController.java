@@ -40,29 +40,15 @@ public class PagosViewController {
     public void setApp(App app, Pago pago) {
         this.app = app;
         System.out.println("Asignando el pago");
-//        this.pago = pago;
         initDataBinding(pago);
     }
-    
-    
-//    @FXML
-//    void initialize() {
-////    	vehiculoController = new VehiculoController(app.parqueadero);
-//
-//    	initView();
-//  }
-//    
-//    private void initView() {
-//        // Traer los datos del cliente a la tabla
-//        initDataBinding();
-//    }
     
     private void initDataBinding(Pago pago) {
     	System.out.println("Pago"+pago.getPlaca());
     	
         labelPlaca.setText(pago.getPlaca());
-        if(pago.getMembrecia() != null) {
-        	labelTipoMembresia.setText(String.valueOf(pago.getMembrecia()));
+        if(pago.getMembresia() != null) {
+        	labelTipoMembresia.setText(String.valueOf(pago.getMembresia()));
         }else {
         	labelTipoMembresia.setText("No tiene Memnresia");
         }

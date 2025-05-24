@@ -16,6 +16,7 @@ public class Parqueadero {
 	private Pago pago;
     private Collection<HistorialPagos> historialPagos;
     private EspaciosDisponibles espaciosDisponibles;
+    private Collection<Cliente> listaClientes;
 	private Collection<Vehiculo> listaVehiculos;
 	private String direccion;
 	private String representante;
@@ -27,6 +28,7 @@ public class Parqueadero {
 		this.direccion = direccion;
         this.listaVehiculos = new LinkedList<>();
         this.historialPagos = new LinkedList<>();
+        this.listaClientes = new LinkedList<>();
 		this.representante = representante;
 		this.telefono = telefono;
 	}
@@ -80,8 +82,126 @@ public class Parqueadero {
 		this.historialPagos = historialPagos;
 	}
 	
-	public void crearEspacipos(EspaciosDisponibles espaciosDisponibles) {
+	public EspaciosDisponibles getEspaciosDisponibles() {
+		return espaciosDisponibles;
+	}
+
+
+	public void setEspaciosDisponibles(EspaciosDisponibles espaciosDisponibles) {
 		this.espaciosDisponibles = espaciosDisponibles;
+	}
+	
+	public Collection<Cliente> getListaClientes() {
+		return listaClientes;
+	}
+	
+	public void setListaClientes(Collection<Cliente> listaClientes) {
+		this.listaClientes = listaClientes;
+	}
+	
+	public Tarifa getTarifa() {
+		return tarifa;
+	}
+
+
+	public void setTarifa(Tarifa tarifa) {
+		this.tarifa = tarifa;
+	}
+	
+	public void crearEspaciposDisponibles(EspaciosDisponibles espaciosDisponibles) {
+		this.espaciosDisponibles = espaciosDisponibles;
+	}
+
+	public boolean actualizarEspaciposDisponibles(EspaciosDisponibles espacios) {
+        boolean centinela = false;       
+        if (espacios != null) {
+        	espaciosDisponibles.setEspaciosAutomovil(espacios.getEspaciosAutomovil());
+        	espaciosDisponibles.setEspaciosCamion(espacios.getEspaciosCamion());
+        	espaciosDisponibles.setEspaciosMoto(espacios.getEspaciosMoto());
+        	restarVehiculosRegistrados();
+        }
+        return centinela;
+    }
+	
+	public void restarVehiculosRegistrados() {
+		for (Vehiculo vehiculo : listaVehiculos) {
+			if (vehiculo instanceof Automovil){
+				int espacios = espaciosDisponibles.getEspaciosAutomovil();
+				espaciosDisponibles.setEspaciosAutomovil(espacios-1);
+			
+			}
+		}
+	}
+
+	public boolean actualizarCliente(String cedula, Cliente actualizado) {
+        boolean centinela = false;       
+        for (Cliente cliente : listaClientes) {   
+            if (cliente.getCedula().equals(cedula)) {
+            	cliente.setNombre(actualizado.getNombre());
+            	cliente.setTelefono(actualizado.getTelefono());
+            	cliente.setCorreo(actualizado.getCorreo());
+            	cliente.setPlaca(actualizado.getPlaca());
+                centinela = true;
+                break;
+            }
+        }
+        return centinela;
+    }
+				
+	public boolean eliminarCliente(String cedula) {
+        boolean centinela = false;
+        for (Cliente cliente : listaClientes) {
+            if (cliente.getCedula().equals(cedula)) {
+            	listaClientes.remove(cliente);
+                centinela = true;
+                break;
+            }
+        }
+        return centinela;
+    }
+	
+	
+	public Cliente buscarCliente (String cedula) {
+		for(Cliente cliente : listaClientes) {
+			 if (cliente.getCedula().equals(cedula)) {
+				 return cliente;
+			 }
+		}
+		return null;
+	}
+	
+	public boolean verificarCliente(String cedula) {
+        boolean centinela = false;
+        for (Cliente cliente : listaClientes) {
+            if (cliente.getCedula().equals(cedula)) {
+                centinela = true;
+            }
+        }
+        return centinela;
+    }
+	
+	public boolean crearCliente(Cliente cliente) {
+		boolean centinela = false;
+		if (!verificarCliente(cliente.getCedula())) {
+			if (verificarExistenciaVehiculo(cliente.getPlaca())) {
+				listaClientes.add(cliente);
+				
+				centinela = true;
+			}
+			
+		}
+		return centinela;
+	}
+	
+	public boolean verificarExistenciaVehiculo(String placa) {
+		boolean centinela = false;
+		for (Vehiculo vehiculo : listaVehiculos) {
+			if (vehiculo.getPlaca().equals(placa)) {
+				
+				centinela = true;
+			}			
+		}
+		return centinela;
 	}
 
 	public boolean crearTarifa(Tarifa precio){
@@ -227,6 +347,7 @@ public class Parqueadero {
                 if (vehiculo instanceof Automovil){
                     if(vehiculo.getMembresia().getTipoMembresia()==TipoMembresia.MESAUTO){
                         pago = new Pago(getNombre(), vehiculo.getPlaca(),vehiculo.getMembresia().getTipoMembresia() , LocalDate.now(), tarifa.getPrecioAutomovilMes());
+                        crearHistorialPagos(pago);
                     }
                 }
                 if(vehiculo instanceof Moto){
@@ -262,6 +383,7 @@ public class Parqueadero {
                 if (vehiculo instanceof Automovil)
                     pago = horasCobradas * Tarifa.getPrecioAutomovilHora();
                     sumaEspaciosAutomovil();
+//                    eliminarVehiculo(ve)
 
             if(vehiculo.getPlaca().equals(placa)){
                 if (vehiculo instanceof Moto)
@@ -290,14 +412,14 @@ public class Parqueadero {
         }
         return centinela;
     }
-    public List<HistorialPagos> filtrarPagosPorFecha(LocalDate fechaInicio, LocalDate fechaSalida) {
-        List<HistorialPagos> resultado = new ArrayList<>();
+    public Collection<HistorialPagos> filtrarPagosPorFecha(LocalDate fechaInicio, LocalDate fechaSalida) {
+        Collection<HistorialPagos> resultado = new ArrayList<>();
 
         for (HistorialPagos pago : historialPagos) {
-            LocalDate fecha = pago.getPago();
+            LocalDate fecha = pago.getFecha();
 
             if ((fecha.isEqual(fechaInicio) || fecha.isAfter(fechaInicio)) &&
-                (fecha.isEqual(fechaFin) || fecha.isBefore(fechaFin))) {
+                (fecha.isEqual(fechaSalida) || fecha.isBefore(fechaSalida))) {
                 resultado.add(pago);
             }
         }
@@ -376,5 +498,16 @@ public class Parqueadero {
         }
         return centinela;
     }
+    
+    public void TerminoMembresia(String placa) {
+		for (Vehiculo vehiculo : listaVehiculos) {
+			if (vehiculo.getPlaca().equals(placa)) {
+				
+				LocalDate actual = LocalDate.now();
+				vehiculo.getMembresia().getFinMembresia();
+				
+			}
+		}
+	}
 		
 }

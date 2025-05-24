@@ -21,10 +21,10 @@
                      </font>
                   </Label>
                   
-                                          <TextField fx:id="txtTarifaMoto" layoutX="329.0" layoutY="332.0" prefHeight="31.0" prefWidth="168.0" />
-                  <TextField fx:id="txtTarifaCamion" layoutX="329.0" layoutY="431.0" prefHeight="31.0" prefWidth="168.0" />
-                  <TextField fx:id="txtTarifaAuto" layoutX="329.0" layoutY="381.0" prefHeight="31.0" prefWidth="168.0" />
-                  <Button fx:id="btnActualizarTarifa" layoutX="520.0" layoutY="562.0" mnemonicParsing="false" onAction="#onActualizarVehiculo" prefHeight="37.0" prefWidth="111.0" text="Actualizar Tarifa" />
+                                          <TextField fx:id="txtTarifaMotoMes" layoutX="329.0" layoutY="332.0" prefHeight="31.0" prefWidth="168.0" />
+                  <TextField fx:id="txtTarifaCamionMes" layoutX="329.0" layoutY="431.0" prefHeight="31.0" prefWidth="168.0" />
+                  <TextField fx:id="txtTarifaAutoMes" layoutX="329.0" layoutY="381.0" prefHeight="31.0" prefWidth="168.0" />
+                  <Button fx:id="btnActualizarTarifa" layoutX="520.0" layoutY="562.0" mnemonicParsing="false" onAction="#onActualizarTarifa" prefHeight="37.0" prefWidth="111.0" text="Actualizar Tarifa" />
                   <Label layoutX="50.0" layoutY="428.0" prefHeight="37.0" prefWidth="249.0" text="Tarifa de Camion Mes:">
                      <font>
                         <Font size="24.0" />
@@ -45,9 +45,9 @@
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="txtTarifaAuto1" layoutX="894.0" layoutY="238.0" prefHeight="31.0" prefWidth="168.0" />
-                  <TextField fx:id="txtTarifaCamion1" layoutX="894.0" layoutY="284.0" prefHeight="31.0" prefWidth="168.0" />
-                  <TextField fx:id="txtTarifaMoto1" layoutX="894.0" layoutY="192.0" prefHeight="31.0" prefWidth="168.0" />
+                  <TextField fx:id="txtTarifaAutoTresMeses" layoutX="894.0" layoutY="238.0" prefHeight="31.0" prefWidth="168.0" />
+                  <TextField fx:id="txtTarifaCamionTresMeses" layoutX="894.0" layoutY="284.0" prefHeight="31.0" prefWidth="168.0" />
+                  <TextField fx:id="txtTarifaMotoTresMeses" layoutX="894.0" layoutY="192.0" prefHeight="31.0" prefWidth="168.0" />
                   <Label layoutX="547.0" layoutY="189.0" prefHeight="37.0" prefWidth="294.0" text="Tarifa de Moto Tres Meses:">
                      <font>
                         <Font size="24.0" />
@@ -63,9 +63,9 @@
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="txtTarifaAuto2" layoutX="329.0" layoutY="238.0" prefHeight="31.0" prefWidth="168.0" />
-                  <TextField fx:id="txtTarifaCamion2" layoutX="329.0" layoutY="284.0" prefHeight="31.0" prefWidth="168.0" />
-                  <TextField fx:id="txtTarifaMoto2" layoutX="329.0" layoutY="192.0" prefHeight="31.0" prefWidth="168.0" />
+                  <TextField fx:id="txtTarifaAutoHora" layoutX="329.0" layoutY="238.0" prefHeight="31.0" prefWidth="168.0" />
+                  <TextField fx:id="txtTarifaCamionHora" layoutX="329.0" layoutY="284.0" prefHeight="31.0" prefWidth="168.0" />
+                  <TextField fx:id="txtTarifaMotoHora" layoutX="329.0" layoutY="192.0" prefHeight="31.0" prefWidth="168.0" />
                   <Label layoutX="50.0" layoutY="189.0" prefHeight="37.0" prefWidth="228.0" text="Tarifa de Moto Hora:">
                      <font>
                         <Font size="24.0" />
@@ -81,9 +81,9 @@
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="txtTarifaAuto3" layoutX="894.0" layoutY="381.0" prefHeight="31.0" prefWidth="168.0" />
-                  <TextField fx:id="txtTarifaCamion3" layoutX="894.0" layoutY="431.0" prefHeight="31.0" prefWidth="168.0" />
-                  <TextField fx:id="txtTarifaMoto3" layoutX="894.0" layoutY="332.0" prefHeight="31.0" prefWidth="168.0" />
+                  <TextField fx:id="txtTarifaAutoAnio" layoutX="894.0" layoutY="381.0" prefHeight="31.0" prefWidth="168.0" />
+                  <TextField fx:id="txtTarifaCamionAnio" layoutX="894.0" layoutY="431.0" prefHeight="31.0" prefWidth="168.0" />
+                  <TextField fx:id="txtTarifaMotoAnio" layoutX="894.0" layoutY="332.0" prefHeight="31.0" prefWidth="168.0" />
                   <Label layoutX="547.0" layoutY="329.0" prefHeight="37.0" prefWidth="294.0" text="Tarifa de Moto Año:">
                      <font>
                         <Font size="24.0" />

@@ -14,7 +14,6 @@ import viewController.GestionTarifasViewController;
 import viewController.HistorialPagosViewController;
 import viewController.MenuParqueaderoViewController;
 import viewController.PagosViewController;
-import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -27,6 +26,7 @@ import model.Parqueadero;
 import model.Tarifa;
 import model.TipoMembresia;
 import model.Vehiculo;
+import model.HistorialPagos;
 
 /**
  * JavaFX App
@@ -42,21 +42,24 @@ public class App extends Application {
     public void start(Stage primaryStage) throws IOException {
         this.primaryStage = primaryStage;
 		this.primaryStage.setTitle("Administracion de Parqueadero");
+		inicializarData();
 		GestionarParqueadero();
     }
     
     public void inicializarData(){
+    	System.out.println("Inicializar Datos");
         EspaciosDisponibles espaciosDisponibles = new EspaciosDisponibles(10, 10, 10);
-        parqueadero.crearEspacipos(espaciosDisponibles);
+        parqueadero.crearEspaciposDisponibles(espaciosDisponibles);
         Tarifa tarifa = new Tarifa(100, 150, 200, 20000, 35000, 30000, 50000, 95000, 80000, 200000, 350000, 300000);
         parqueadero.crearTarifa(tarifa);
         Membresia membresia = new Membresia(TipoMembresia.MESAUTO, LocalDate.now(), LocalDate.now());
         Vehiculo vehiculo = new Vehiculo("123", "Azul", "2020", membresia);
         parqueadero.crearVehiculoMembresia(vehiculo, "Automovil");
+        Pago pago = new Pago(parqueadero.getNombre(), "1234" ,TipoMembresia.MESAUTO, LocalDate.now(), 100);
+        parqueadero.crearHistorialPagos(pago);
     }
     
     public void GestionarParqueadero() {
-    	inicializarData();
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(App.class.getResource("GestionParqueadero.fxml"));
