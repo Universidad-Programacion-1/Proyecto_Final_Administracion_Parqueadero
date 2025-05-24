@@ -16,6 +16,13 @@ public class HistorialPagos {
 	public void setFecha(LocalDate fecha) {
 		this.fecha = fecha;
 	}
+	public Pago getPago() {
+		return Pago;
+	}
+	public void setPago(Pago pago) {
+		Pago = pago;
+	}
+
 
 	
 

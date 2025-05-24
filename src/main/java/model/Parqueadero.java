@@ -13,6 +13,7 @@ public class Parqueadero {
 	private Membresia membresia;
 	private Tarifa tarifa;
 	private Pago pago;
+    private Collection<HistorialPagos> historialPagos;
     private EspaciosDisponibles espaciosDisponibles;
 	private Collection<Vehiculo> listaVehiculos;
 	private String direccion;
@@ -24,9 +25,11 @@ public class Parqueadero {
 		this.nombre = nombre;
 		this.direccion = direccion;
         this.listaVehiculos = new LinkedList<>();
+        this.historialPagos = new LinkedList<>();
 		this.representante = representante;
 		this.telefono = telefono;
 	}
+
 
 	public String getNombre() {
 		return nombre;
@@ -67,6 +70,14 @@ public class Parqueadero {
 	public void setListaVehiculos(Collection<Vehiculo> listaVehiculos) {
 		this.listaVehiculos = listaVehiculos;
 	}
+
+    public Collection<historialPagos> gethistorialPagos() {
+		return historialPagos;
+	}
+
+	public void sethistorialPagos(Collection<historialPagos> historialPagos) {
+		this.historialPagos = historialPagos;
+	}
 	
 	public void crearEspacipos(EspaciosDisponibles espaciosDisponibles) {
 		this.espaciosDisponibles = espaciosDisponibles;
@@ -77,6 +88,47 @@ public class Parqueadero {
         boolean centinela = false;
         this.tarifa = precio;
         return centinela = true;
+    }
+    public boolean modificarTarifa(Tarifa actualizado) {
+        boolean centinela = false;
+        if (actualizado != null) {
+            this.tarifa.setPrecioAnioAutomovil(actualizado.getPrecioAnioAutomovil());
+            this.tarifa.setPrecioAnioCamion(actualizado.getPrecioAnioCamion());
+            this.tarifa.setPrecioAnioMoto(actualizado.getPrecioAnioMoto());
+            this.tarifa.setPrecioAutomovilHora(actualizado.getPrecioAutomovilHora());
+            this.tarifa.setPrecioCamionHora(actualizado.getPrecioCamionHora());
+            this.tarifa.setPrecioMotoHora(actualizado.getPrecioMotoHora());
+            this.tarifa.setPrecioAutomovilTresMeses(actualizado.getPrecioAutomovilTresMeses());
+            this.tarifa.setPrecioCamionTresMeses(actualizado.getPrecioCamionTresMeses());
+            this.tarifa.setPrecioMotoTresMeses(actualizado.getPrecioMotoTresMeses());
+            this.tarifa.setPrecioAutomovilMes(actualizado.getPrecioAutomovilMes());
+            this.tarifa.setPrecioCamionMes(actualizado.getPrecioCamionMes());
+            this.tarifa.setPrecioMotoMes(actualizado.getPrecioMotoMes());
+            centinela = true;
+            break;
+        }
+        
+        return centinela;
+    }
+    public boolean crearHistorialPagos(Pago pago) {
+        boolean centinela = false;
+        if (pago != null) {
+            HistorialPagos historial = new HistorialPagos(pago, LocalDate.now());
+            historialPagos.add(historial);
+            centinela = true;
+        }
+        return centinela;
+    }
+    public boolean eliminarHistorialPagos(String placa) {
+        boolean centinela = false;
+        for (HistorialPagos historialpago : historialPagos) {
+            if (historialpago.getPago().getPlaca().equals(placa)) {
+            	historialpago.remove(historialpago);
+                centinela = true;
+                break;
+            }
+        }
+        return centinela;
     }
 
 
@@ -196,6 +248,35 @@ public class Parqueadero {
         return pago;
 
     }
+    public Pago crearPagoVehiculoTemporal(String placa) {
+        Pago pago = null;
+
+        LocalDate horaSalida = LocalDate.now();
+        LocalDate horaEntrada = vehiculo.getFechaEntrada();
+
+        long minutos = Duration.between(horaEntrada, horaSalida).toMinutes();
+        long horasCobradas = (long) Math.ceil(minutos / 60.0); 
+
+        for(Vehiculo vehiculo : listaVehiculos){
+            if(vehiculo.getPlaca().equals(placa)){
+                if (vehiculo instanceof Automovil)
+                    pago = horasCobradas * Tarifa.getPrecioAutomovilHora();
+                    sumaEspaciosAutomovil();
+
+            if(vehiculo.getPlaca().equals(placa)){
+                if (vehiculo instanceof Moto)
+                    pago = horasCobradas * Tarifa.getPrecioMotoHora();
+                    sumaEspaciosMoto();
+
+            if(vehiculo.getPlaca().equals(placa)){
+                if (vehiculo instanceof Camion)
+                    pago = horasCobradas * Tarifa.getPrecioCamionHora();
+                    sumaEspaciosCamion();
+        }
+        listaVehiculos.remove(vehiculo);
+        return pago;
+    }
+
 	public boolean actualizarVehiculo(String placa, Vehiculo actualizado) {
         boolean centinela = false;
         for (Vehiculo vehiculo : listaVehiculos) {
@@ -206,6 +287,56 @@ public class Parqueadero {
                 centinela = true;
                 break;
             }
+        }
+        return centinela;
+    }
+    public List<HistorialPagos> filtrarPagosPorFecha(LocalDate fechaInicio, LocalDate fechaSalida) {
+        List<HistorialPagos> resultado = new ArrayList<>();
+
+        for (HistorialPagos pago : historialPagos) {
+            LocalDate fecha = pago.getPago();
+
+            if ((fecha.isEqual(fechaInicio) || fecha.isAfter(fechaInicio)) &&
+                (fecha.isEqual(fechaFin) || fecha.isBefore(fechaFin))) {
+                resultado.add(pago);
+            }
+        }
+
+        return resultado;
+    }
+    public boolean sumaEspaciosCamion(){
+        int espacios = espaciosDisponibles.getEspaciosCamion();
+        boolean centinela = false;
+        if(espacios != null){
+            espaciosDisponibles.setEspaciosCamion(espacios+1);
+            centinela = true;
+        }
+        else{
+            System.out.println("No se pudo sumar el espacio");
+        }
+        return centinela;
+    }
+    public boolean sumaEspaciosMoto(){
+        int espacios = espaciosDisponibles.getEspaciosMoto();
+        boolean centinela = false;
+        if(espacios != null){
+            espaciosDisponibles.setEspaciosMoto(espacios+1);
+            centinela = true;
+        }
+        else{
+            System.out.println("No se pudo sumar el espacio");
+        }
+        return centinela;
+    }
+    public boolean sumaEspaciosAutomovil(){
+        int espacios = espaciosDisponibles.getEspaciosAutomovil();
+        boolean centinela = false;
+        if(espacios != null){
+            espaciosDisponibles.setEspaciosAutomovil(espacios+1);
+            centinela = true;
+        }
+        else{
+            System.out.println("No se pudo sumar el espacio");
         }
         return centinela;
     }
