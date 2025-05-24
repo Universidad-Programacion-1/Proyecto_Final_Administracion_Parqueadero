@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="705.0" prefWidth="1104.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="viewController.GestionTarifasViewController">
+   <children>
+      <SplitPane layoutX="-14.0" layoutY="-33.0" orientation="VERTICAL" prefHeight="726.0" prefWidth="1171.0">
+         <items>
+            <Pane prefHeight="724.0" prefWidth="1140.0" style="-fx-border-image-width: 1px;">
+               <effect>
+                  <Blend />
+               </effect>
+               <children>
+                  <Label layoutX="50.0" layoutY="329.0" prefHeight="37.0" prefWidth="228.0" text="Tarifa de Moto Mes:">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  
+                                          <TextField fx:id="txtTarifaMotoMes" layoutX="329.0" layoutY="332.0" prefHeight="31.0" prefWidth="168.0" />
+                  <TextField fx:id="txtTarifaCamionMes" layoutX="329.0" layoutY="431.0" prefHeight="31.0" prefWidth="168.0" />
+                  <TextField fx:id="txtTarifaAutoMes" layoutX="329.0" layoutY="381.0" prefHeight="31.0" prefWidth="168.0" />
+                  <Button fx:id="btnActualizarTarifa" layoutX="520.0" layoutY="562.0" mnemonicParsing="false" onAction="#onActualizarTarifa" prefHeight="37.0" prefWidth="111.0" text="Actualizar Tarifa" />
+                  <Label layoutX="50.0" layoutY="428.0" prefHeight="37.0" prefWidth="249.0" text="Tarifa de Camion Mes:">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="50.0" layoutY="378.0" prefHeight="37.0" prefWidth="228.0" text="Tarifa de Auto Mes:">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="547.0" layoutY="235.0" prefHeight="37.0" prefWidth="294.0" text="Tarifa de Auto Tres Meses:">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="547.0" layoutY="281.0" prefHeight="37.0" prefWidth="329.0" text="Tarifa de Camion Tres Meses:">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtTarifaAutoTresMeses" layoutX="894.0" layoutY="238.0" prefHeight="31.0" prefWidth="168.0" />
+                  <TextField fx:id="txtTarifaCamionTresMeses" layoutX="894.0" layoutY="284.0" prefHeight="31.0" prefWidth="168.0" />
+                  <TextField fx:id="txtTarifaMotoTresMeses" layoutX="894.0" layoutY="192.0" prefHeight="31.0" prefWidth="168.0" />
+                  <Label layoutX="547.0" layoutY="189.0" prefHeight="37.0" prefWidth="294.0" text="Tarifa de Moto Tres Meses:">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="50.0" layoutY="235.0" prefHeight="37.0" prefWidth="228.0" text="Tarifa de Auto Hora:">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="50.0" layoutY="281.0" prefHeight="37.0" prefWidth="262.0" text="Tarifa de Camion Hora:">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtTarifaAutoHora" layoutX="329.0" layoutY="238.0" prefHeight="31.0" prefWidth="168.0" />
+                  <TextField fx:id="txtTarifaCamionHora" layoutX="329.0" layoutY="284.0" prefHeight="31.0" prefWidth="168.0" />
+                  <TextField fx:id="txtTarifaMotoHora" layoutX="329.0" layoutY="192.0" prefHeight="31.0" prefWidth="168.0" />
+                  <Label layoutX="50.0" layoutY="189.0" prefHeight="37.0" prefWidth="228.0" text="Tarifa de Moto Hora:">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="548.0" layoutY="378.0" prefHeight="37.0" prefWidth="301.0" text="Tarifa de Auto Año:">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="548.0" layoutY="428.0" prefHeight="37.0" prefWidth="294.0" text="Tarifa de Camion Año:">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtTarifaAutoAnio" layoutX="894.0" layoutY="381.0" prefHeight="31.0" prefWidth="168.0" />
+                  <TextField fx:id="txtTarifaCamionAnio" layoutX="894.0" layoutY="431.0" prefHeight="31.0" prefWidth="168.0" />
+                  <TextField fx:id="txtTarifaMotoAnio" layoutX="894.0" layoutY="332.0" prefHeight="31.0" prefWidth="168.0" />
+                  <Label layoutX="547.0" layoutY="329.0" prefHeight="37.0" prefWidth="294.0" text="Tarifa de Moto Año:">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="dtnAtras" layoutX="1050.0" layoutY="92.0" mnemonicParsing="false" onAction="#onOpenMenu" prefHeight="37.0" prefWidth="44.0" style="-fx-background-color: red; -fx-border-color: black;" text="X" />
+                  <Label layoutX="289.0" layoutY="64.0" text="Gestion de Tarifas">
+                     <font>
+                        <Font name="System Bold" size="64.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+         </items>
+      </SplitPane>
+   </children>
+</AnchorPane>

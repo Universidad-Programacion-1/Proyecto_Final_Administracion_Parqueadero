@@ -1,13 +1,75 @@
 package model;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Pago {
 
-	private Parqueadero parqueadero;
+	private String parqueadero;
 	private String placa;
-	private TipoMembresia membrecia;
-	private int totalApagar;
-	private Date fecha;
+	private Tarifa tarifa;
+	private TipoMembresia membresia;
+	private long totalpagar;
+	private LocalDate fechaEntrada;
+
+	public Pago(String parqueadero, String placa, TipoMembresia membresia, LocalDate fechaEntrada, long totalpagar) {
+		this.parqueadero = parqueadero;
+		this.placa = placa;
+		this.membresia = membresia;
+		this.totalpagar = totalpagar;
+		this.fechaEntrada = fechaEntrada;
+	}
+
+	public String getPlaca() {
+		return placa;
+	}
+
+	public void setPlaca(String placa) {
+		this.placa = placa;
+	}
+
+	public TipoMembresia getMembresia() {
+		return membresia;
+	}
+
+	public void setMembresia(TipoMembresia membrecia) {
+		this.membresia = membrecia;
+	}
+
+	public Tarifa getTarifa() {
+		return tarifa;
+	}
+
+	public void setTarifa(Tarifa tarifa) {
+		this.tarifa = tarifa;
+	}
+
+	public long getTotalpagar() {
+		return totalpagar;
+	}
+
+	public void setTotalpagar(long totalpagar) {
+		this.totalpagar = totalpagar;
+	}
+
+	public String getParqueadero() {
+		return parqueadero;
+	}
+
+	public void setParqueadero(String parqueadero) {
+		this.parqueadero = parqueadero;
+	}
+
+	public LocalDate getFechaEntrada() {
+		return fechaEntrada;
+	}
+
+	public void setFechaEntrada(LocalDate fechaEntrada) {
+		this.fechaEntrada = fechaEntrada;
+	}
+
+	
+
+	
+	
 	
 }

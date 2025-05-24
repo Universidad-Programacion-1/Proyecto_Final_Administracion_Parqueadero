@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Button?>
+<?import javafx.geometry.Insets?>
+
+<VBox alignment="CENTER" prefHeight="470.0" prefWidth="458.0" spacing="20.0" style="-fx-border-color: black; -fx-border-width: 5;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="viewController.GestionParqueaderoViewController">
+   <children>
+      <Label fx:id="txtTitleVehiculos" graphicTextGap="5.0" prefHeight="43.0" prefWidth="335.0" text="Bienvenidos a Gestion de Parqueadero" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Pane prefHeight="318.0" prefWidth="362.0" style="-fx-background-radius: blue;">
+         <children>
+            <Button fx:id="btGestionTarifas" layoutX="123.0" layoutY="55.0" onAction="#onOpenCrudTarifas" prefHeight="33.0" prefWidth="161.0" style="-fx-border-color: black;" text="Gestión de Tarifas">
+               <font>
+                  <Font size="15.0" />
+               </font></Button>
+            <Button fx:id="btGestionCliente" layoutX="123.0" layoutY="97.0" onAction="#onOpenCrudCliente" prefHeight="33.0" prefWidth="161.0" style="-fx-border-color: black;" text="Gestión de Clientes">
+               <font>
+                  <Font size="15.0" />
+               </font></Button>
+            <Button fx:id="btGestionEspacios" layoutX="124.0" layoutY="184.0" onAction="#onOpenCrudEspacios" prefHeight="33.0" prefWidth="161.0" style="-fx-border-color: black;" text="Gestión de Espacios">
+               <font>
+                  <Font size="15.0" />
+               </font></Button>
+            <Button fx:id="btGestionVehiculos" layoutX="124.0" layoutY="138.0" onAction="#onOpenCrudVehiculos" style="-fx-border-color: black;" text="Gestión de Vehiculos">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="btHistorialPagos" layoutX="123.0" layoutY="229.0" onAction="#onOpenHistorialPagos" prefHeight="33.0" prefWidth="161.0" style="-fx-border-color: black;" text="Historial de Pagos">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="btGestionParqueadero" layoutX="111.0" layoutY="14.0" onAction="#onOpenGestionParqueadero" prefHeight="33.0" prefWidth="188.0" style="-fx-border-color: black;" text="Gestion de Parqueadero">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
+   </children>
+   <padding>
+      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+   </padding>
+</VBox>
