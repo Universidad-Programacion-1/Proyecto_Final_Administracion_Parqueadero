@@ -16,9 +16,6 @@ public class GestionParqueaderoViewController {
     App app;
     
     @FXML
-    private Button btRealizarpagp;
-
-    @FXML
     private Button btHistorialPagos;
     
     @FXML
@@ -52,11 +49,6 @@ public class GestionParqueaderoViewController {
     @FXML
     void onOpenHistorialPagos() {
     	app.HistorialPagos();
-    }
-    
-    @FXML
-    void onOpenPagos() {
-    	app.Pagos();
     }
 
     @FXML

@@ -1,7 +1,9 @@
 package viewController;
 
 import java.time.LocalDate;
+import java.util.Collection;
 import java.util.Date;
+import java.util.Iterator;
 
 import org.openjfx.Administracion_Parqueadero.App;
 
@@ -39,7 +41,6 @@ public class CrearVehiculoViewController {
 
     @FXML
     private Button btnActualizarVehiculo;
-
 
     @FXML
     private TextField txtPlaca;
@@ -99,13 +100,10 @@ public class CrearVehiculoViewController {
     @FXML
     void initialize() {
     	vehiculoController = new VehiculoController(app.parqueadero);
+    	
     	cbxTipoMembresia.getItems().addAll("MES AUTO", "MES MOTO", "MES CAMION", "TRESMESES AUTO", "TRESMESES MOTO", "TRESMESES CAMION", "AÑO AUTO", "AÑO MOTO", "AÑO CAMION");
     	
     	cbxTipoVehiculo.getItems().addAll("Moto", "Automovil", "Camion");
-
-//    	cbxFechaInicial = new DatePicker(LocalDate.now());
-//    	cbxFechaInicial.setEditable(false);
-
 
     	initView();
   }
@@ -121,11 +119,23 @@ public class CrearVehiculoViewController {
         tblListVehiculos.getItems().clear();
 
         // Agregar los elementos a la tabla
+//        ObservableList<Vehiculo> listaActual = nuevaListaVehiculosMembresia(listVehiculos);
         tblListVehiculos.setItems(listVehiculos);
 
         // Seleccionar elemento de la tabla
         listenerSelection();
     }
+    
+    private Collection<Vehiculo> nuevaListaVehiculosMembresia (Collection<Vehiculo> lista) {
+    	ObservableList<Vehiculo> nuvaLista = FXCollections.observableArrayList();
+    	
+    	for (Vehiculo vehiculo : lista) {
+			if (vehiculo.getMembresia() != null) {
+				nuvaLista.add(vehiculo);
+			}
+		}
+    	return nuvaLista;
+	}
     
     private void initDataBinding() {
         tbcPlaca.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getPlaca()));
@@ -153,7 +163,8 @@ public class CrearVehiculoViewController {
     }
     
     private void obtenerVehiculo() {
-        listVehiculos.addAll(vehiculoController.obtenerListaVehiculos());
+    	Collection<Vehiculo> lista = nuevaListaVehiculosMembresia(vehiculoController.obtenerListaVehiculos());
+        listVehiculos.addAll(lista);
     }
     
     private void crearVehiculoMembresia() {

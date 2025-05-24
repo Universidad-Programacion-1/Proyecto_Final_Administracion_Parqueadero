@@ -102,22 +102,23 @@ public class Parqueadero {
     }
     public boolean crearVehiculoTemporal(Vehiculo vehiculo, String tipoVehiculo) {
     	boolean centinela = false;
-        System.out.println(vehiculo);
+        System.out.println(tipoVehiculo);
+        System.out.println(vehiculo.getPlaca());
         if (!verificarVehiculo(vehiculo.getPlaca())) {
             if (tipoVehiculo.equals("Automovil")) {
-                Automovil auto = new Automovil(vehiculo.getPlaca(), LocalDateTime.now());
+                Automovil auto = new Automovil(vehiculo.getPlaca(), vehiculo.getFechaIngreso());
                 listaVehiculos.add(auto);
                 restaEspaciosAutomovil();
                 centinela = true;
             } 
             if (tipoVehiculo.equals("Moto")) {
-                Moto moto = new Moto(vehiculo.getPlaca(), LocalDateTime.now());
+                Moto moto = new Moto(vehiculo.getPlaca(), vehiculo.getFechaIngreso());
                 listaVehiculos.add(moto);
                 restaEspaciosMoto();
                 centinela = true;
             } 
             if (tipoVehiculo.equals("Camion")) {
-                Camion camion = new Camion(vehiculo.getPlaca(), LocalDateTime.now());
+                Camion camion = new Camion(vehiculo.getPlaca(), vehiculo.getFechaIngreso());
                 listaVehiculos.add(camion);
                 restaEspaciosCamion();
                 centinela = true;
@@ -171,8 +172,6 @@ public class Parqueadero {
             if(vehiculo.getPlaca().equals(placa)){
                 System.out.println("si entro");
                 if (vehiculo instanceof Automovil){
-                    System.out.println("Tipo de vehiculo"+ vehiculo.getMembresia().getTipoMembresia());
-                    System.out.println("Tipo membresia" + TipoMembresia.MESAUTO);
                     if(vehiculo.getMembresia().getTipoMembresia()==TipoMembresia.MESAUTO){
                         pago = new Pago(getNombre(), vehiculo.getPlaca(),vehiculo.getMembresia().getTipoMembresia() , LocalDate.now(), tarifa.getPrecioAutomovilMes());
                     }

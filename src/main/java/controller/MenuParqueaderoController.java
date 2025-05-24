@@ -27,7 +27,7 @@ public class MenuParqueaderoController {
 	      return parqueadero.crearPagoVehiculoMembresia(placa);
 	  }
 	  
-	  public Pago pagoVehiculoTemporal(String placa){
-	      return parqueadero.crearPagoVehiculoMembresia(placa);
-	  }
+//	  public Pago pagoVehiculoTemporal(String placa){
+//	      return parqueadero.cre(placa);
+//	  }
 }
