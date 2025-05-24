@@ -97,7 +97,7 @@ public class App extends Application {
             loader.setLocation(App.class.getResource("CrearVehiculo.fxml"));
             AnchorPane rootLayout = (AnchorPane) loader.load();
             CrearVehiculoViewController crearVehiculo = loader.getController();
-            crearVehiculo.setApp(this);
+            crearVehiculo.setApp(this); 
             
             Scene scene = new Scene(rootLayout);
             primaryStage.setScene(scene);

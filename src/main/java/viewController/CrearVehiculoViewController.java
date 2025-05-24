@@ -1,4 +1,4 @@
-package viewController;
+ package viewController;
 
 import java.time.LocalDate;
 import java.util.Collection;
@@ -83,7 +83,7 @@ public class CrearVehiculoViewController {
     	actualizarVehiculoMembresia();
     }
 
-    @FXML
+    @FXML   
     void onAgregarVehiculo() {
     	crearVehiculoMembresia();
     }

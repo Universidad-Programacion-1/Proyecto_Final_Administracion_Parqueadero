@@ -12,6 +12,7 @@ public class Vehiculo {
 	private LocalDate fechaIngreso;
 
 	public Vehiculo(String placa, String color, String modelo, Membresia membresia) {
+
 		this.placa = placa;
 		this.color = color;
 		this.modelo = modelo;
@@ -52,9 +53,4 @@ public class Vehiculo {
 		this.fechaIngreso = fechaIngreso;
 	}
 	
-	
-	
-
-	
-
 }

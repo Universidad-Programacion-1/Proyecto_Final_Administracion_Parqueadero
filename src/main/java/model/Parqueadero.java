@@ -3,6 +3,7 @@ package model;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedList;
 
@@ -123,7 +124,7 @@ public class Parqueadero {
         boolean centinela = false;
         for (HistorialPagos historialpago : historialPagos) {
             if (historialpago.getPago().getPlaca().equals(placa)) {
-            	historialpagos.remove(historialpago);
+            	historialPagos.remove(historialpago);
                 centinela = true;
                 break;
             }
@@ -248,7 +249,7 @@ public class Parqueadero {
 
     }
     public Pago crearPagoVehiculoTemporal(String placa) {
-        Pago pago = null;
+        Pago pago;
 
         LocalDate horaSalida = LocalDate.now();
         LocalDate horaEntrada = vehiculo.getFechaEntrada();
@@ -375,13 +376,5 @@ public class Parqueadero {
         }
         return centinela;
     }
-	
-    
-
-
-		
-
-		
-
 		
 }
