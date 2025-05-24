@@ -17,13 +17,10 @@ public class HistorialPagos {
 		this.fecha = fecha;
 	}
 	public Pago getPago() {
-		return Pago;
+		return pago;
 	}
 	public void setPago(Pago pago) {
-		Pago = pago;
+		this.pago = pago;
 	}
-
-
-	
 
 }

@@ -7,14 +7,14 @@ public class Pago {
 	private String parqueadero;
 	private String placa;
 	private Tarifa tarifa;
-	private TipoMembresia membrecia;
-	private int totalpagar;
+	private TipoMembresia membresia;
+	private long totalpagar;
 	private LocalDate fechaEntrada;
 
-	public Pago(String parqueadero, String placa, TipoMembresia membrecia, LocalDate fechaEntrada, int totalpagar) {
+	public Pago(String parqueadero, String placa, TipoMembresia membresia, LocalDate fechaEntrada, long totalpagar) {
 		this.parqueadero = parqueadero;
 		this.placa = placa;
-		this.membrecia = membrecia;
+		this.membresia = membresia;
 		this.totalpagar = totalpagar;
 		this.fechaEntrada = fechaEntrada;
 	}
@@ -27,15 +27,12 @@ public class Pago {
 		this.placa = placa;
 	}
 
-
-	
-
-	public TipoMembresia getMembrecia() {
-		return membrecia;
+	public TipoMembresia getMembresia() {
+		return membresia;
 	}
 
-	public void setMembrecia(TipoMembresia membrecia) {
-		this.membrecia = membrecia;
+	public void setMembresia(TipoMembresia membrecia) {
+		this.membresia = membrecia;
 	}
 
 	public Tarifa getTarifa() {
@@ -46,11 +43,11 @@ public class Pago {
 		this.tarifa = tarifa;
 	}
 
-	public int getTotalpagar() {
+	public long getTotalpagar() {
 		return totalpagar;
 	}
 
-	public void setTotalpagar(int totalpagar) {
+	public void setTotalpagar(long totalpagar) {
 		this.totalpagar = totalpagar;
 	}
 

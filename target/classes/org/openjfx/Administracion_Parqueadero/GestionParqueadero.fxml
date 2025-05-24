@@ -36,12 +36,7 @@
                   <Font size="15.0" />
                </font>
             </Button>
-            <Button fx:id="btRealizarpagp" layoutX="124.0" layoutY="229.0" onAction="#onOpenPagos" prefHeight="33.0" prefWidth="161.0" style="-fx-border-color: black;" text="Realizar Pago">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Button>
-            <Button fx:id="btHistorialPagos" layoutX="124.0" layoutY="271.0" onAction="#onOpenHistorialPagos" prefHeight="33.0" prefWidth="161.0" style="-fx-border-color: black;" text="Historial de Pagos">
+            <Button fx:id="btHistorialPagos" layoutX="123.0" layoutY="229.0" onAction="#onOpenHistorialPagos" prefHeight="33.0" prefWidth="161.0" style="-fx-border-color: black;" text="Historial de Pagos">
                <font>
                   <Font size="15.0" />
                </font>

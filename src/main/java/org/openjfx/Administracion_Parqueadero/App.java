@@ -14,7 +14,6 @@ import viewController.GestionTarifasViewController;
 import viewController.HistorialPagosViewController;
 import viewController.MenuParqueaderoViewController;
 import viewController.PagosViewController;
-import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -27,6 +26,7 @@ import model.Parqueadero;
 import model.Tarifa;
 import model.TipoMembresia;
 import model.Vehiculo;
+import model.HistorialPagos;
 
 /**
  * JavaFX App
@@ -42,16 +42,24 @@ public class App extends Application {
     public void start(Stage primaryStage) throws IOException {
         this.primaryStage = primaryStage;
 		this.primaryStage.setTitle("Administracion de Parqueadero");
+		inicializarData();
 		GestionarParqueadero();
     }
     
     public void inicializarData(){
+    	System.out.println("Inicializar Datos");
         EspaciosDisponibles espaciosDisponibles = new EspaciosDisponibles(10, 10, 10);
-        parqueadero.crearEspacipos(espaciosDisponibles);
+        parqueadero.crearEspaciposDisponibles(espaciosDisponibles);
+        Tarifa tarifa = new Tarifa(100, 150, 200, 20000, 35000, 30000, 50000, 95000, 80000, 200000, 350000, 300000);
+        parqueadero.crearTarifa(tarifa);
+        Membresia membresia = new Membresia(TipoMembresia.MESAUTO, LocalDate.now(), LocalDate.now());
+        Vehiculo vehiculo = new Vehiculo("123", "Azul", "2020", membresia);
+        parqueadero.crearVehiculoMembresia(vehiculo, "Automovil");
+        Pago pago = new Pago(parqueadero.getNombre(), "1234" ,TipoMembresia.MESAUTO, LocalDate.now(), 100);
+        parqueadero.crearHistorialPagos(pago);
     }
     
     public void GestionarParqueadero() {
-    	inicializarData();
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(App.class.getResource("GestionParqueadero.fxml"));
@@ -92,27 +100,8 @@ public class App extends Application {
             loader.setLocation(App.class.getResource("CrearVehiculo.fxml"));
             AnchorPane rootLayout = (AnchorPane) loader.load();
             CrearVehiculoViewController crearVehiculo = loader.getController();
-            crearVehiculo.setApp(this);
-//=======
-//    public void start(Stage stage) throws IOException {
-//        scene = new Scene(loadFXML("primary"), 640, 480);
-//        stage.setScene(scene);
-//        stage.show();
-//        Parqueadero p= new Parqueadero("EJERCICIO", "CALLE 45", "ALEJO", "1234");
-//        Tarifa t= new Tarifa(0, 0, 0, 0, 1000, 20000, 0, 0, 0, 0, 0, 0);
-//        Membresia membresia = new Membresia(TipoMembresia.MESAUTO,LocalDate.now(), LocalDate.now());
-//        Vehiculo v= new Automovil("DOSPEA", "NEGRO", "ASMNDASF", membresia); 
-//        p.crearTarifa(t);  
-//        System.out.println("VEHICULO"+ p.crearVehiculo(v));
-//        //p.crearVehiculo(v);
-//        Pago pago = p.crearPagoVehiculoMembresia("DOSPEA");
-//        System.out.println(pago.getTotalpagar());
-//        
-//        
-//    }
-//    
-//>>>>>>> c4f33be2f09c9b315691bc0942632660d8b49f72
-
+            crearVehiculo.setApp(this); 
+            
             Scene scene = new Scene(rootLayout);
             primaryStage.setScene(scene);
             primaryStage.show();
@@ -157,13 +146,13 @@ public class App extends Application {
         }
     }
     
-    public void Pagos() {
+    public void Pagos(Pago pago) {
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(App.class.getResource("Pago.fxml"));
             AnchorPane rootLayout = (AnchorPane) loader.load();
             PagosViewController pagos = loader.getController();
-            pagos.setApp(this);
+            pagos.setApp(this, pago);
 
             Scene scene = new Scene(rootLayout);
             primaryStage.setScene(scene);
