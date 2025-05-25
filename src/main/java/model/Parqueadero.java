@@ -128,7 +128,14 @@ public class Parqueadero {
 			if (vehiculo instanceof Automovil){
 				int espacios = espaciosDisponibles.getEspaciosAutomovil();
 				espaciosDisponibles.setEspaciosAutomovil(espacios-1);
-			
+			}
+            if (vehiculo instanceof Moto){
+				int espacios = espaciosDisponibles.getEspaciosMoto();
+				espaciosDisponibles.setEspaciosMoto(espacios-1);
+			}
+            if (vehiculo instanceof Camion){
+				int espacios = espaciosDisponibles.getEspaciosCamion();
+				espaciosDisponibles.setEspaciosCamion(espacios-1);
 			}
 		}
 	}
@@ -349,19 +356,42 @@ public class Parqueadero {
                         pago = new Pago(getNombre(), vehiculo.getPlaca(),vehiculo.getMembresia().getTipoMembresia() , LocalDate.now(), tarifa.getPrecioAutomovilMes());
                         crearHistorialPagos(pago);
                     }
+                    else if(vehiculo.getMembresia().getTipoMembresia()==TipoMembresia.ANIOAUTO){
+                        pago = new Pago(getNombre(), vehiculo.getPlaca(),vehiculo.getMembresia().getTipoMembresia() , LocalDate.now(), tarifa.getPrecioAnioAutomovil());
+                        crearHistorialPagos(pago);
+                    }
+                    else if(vehiculo.getMembresia().getTipoMembresia()==TipoMembresia.TRESMESESAUTO){
+                        pago = new Pago(getNombre(), vehiculo.getPlaca(),vehiculo.getMembresia().getTipoMembresia() , LocalDate.now(), tarifa.getPrecioAutomovilTresMeses());
+                        crearHistorialPagos(pago);
+                    }
+                    
                 }
                 if(vehiculo instanceof Moto){
-                    System.out.println("Tipo de Vehiculo"+ vehiculo.getMembresia().getTipoMembresia());
-                    System.out.println("Tipo de membresia"+ TipoMembresia.MESMOTO);
                     if(vehiculo.getMembresia().getTipoMembresia()==TipoMembresia.MESMOTO){
                         pago = new Pago(getNombre(), vehiculo.getPlaca(), vehiculo.getMembresia().getTipoMembresia(), LocalDate.now(), tarifa.getPrecioMotoMes());
+                        crearHistorialPagos(pago);
+                    }
+                    else if(vehiculo.getMembresia().getTipoMembresia()==TipoMembresia.ANIOMOTO){
+                        pago = new Pago(getNombre(), vehiculo.getPlaca(), vehiculo.getMembresia().getTipoMembresia(), LocalDate.now(), tarifa.getPrecioAnioMoto());
+                        crearHistorialPagos(pago);
+                    }
+                    else if(vehiculo.getMembresia().getTipoMembresia()==TipoMembresia.TRESMESESMOTO){
+                        pago = new Pago(getNombre(), vehiculo.getPlaca(), vehiculo.getMembresia().getTipoMembresia(), LocalDate.now(), tarifa.getPrecioMotoTresMeses());
+                        crearHistorialPagos(pago);
                     }
                 }
                 if(vehiculo instanceof Camion){
-                    System.out.println("Tipo de Vehiculo"+ vehiculo.getMembresia().getTipoMembresia());
-                    System.out.println("Tipo de membresia"+ TipoMembresia.MESCAMION);
                     if(vehiculo.getMembresia().getTipoMembresia()==TipoMembresia.MESCAMION){
                         pago = new Pago(getNombre(),vehiculo.getPlaca(),vehiculo.getMembresia().getTipoMembresia(), LocalDate.now(), tarifa.getPrecioMotoMes());
+                        crearHistorialPagos(pago);
+                    }
+                    else if(vehiculo.getMembresia().getTipoMembresia()==TipoMembresia.ANIOCAMION){
+                        pago = new Pago(getNombre(),vehiculo.getPlaca(),vehiculo.getMembresia().getTipoMembresia(), LocalDate.now(), tarifa.getPrecioAnioCamion());
+                        crearHistorialPagos(pago);
+                    }
+                    else if(vehiculo.getMembresia().getTipoMembresia()==TipoMembresia.TRESMESESCAMION){
+                        pago = new Pago(getNombre(),vehiculo.getPlaca(),vehiculo.getMembresia().getTipoMembresia(), LocalDate.now(), tarifa.getPrecioCamionTresMeses());
+                        crearHistorialPagos(pago);
                     }
                 }
             }
@@ -370,30 +400,38 @@ public class Parqueadero {
 
     }
     public Pago crearPagoVehiculoTemporal(String placa) {
-        Pago pago;
+        Pago pago= null;
 
         LocalDate horaSalida = LocalDate.now();
-        LocalDate horaEntrada = vehiculo.getFechaEntrada();
+        LocalDate horaEntrada = vehiculo.getFechaIngreso();
 
         long minutos = Duration.between(horaEntrada, horaSalida).toMinutes();
         long horasCobradas = (long) Math.ceil(minutos / 60.0); 
 
         for(Vehiculo vehiculo : listaVehiculos){
             if(vehiculo.getPlaca().equals(placa)){
-                if (vehiculo instanceof Automovil)
-                    pago = horasCobradas * Tarifa.getPrecioAutomovilHora();
+                if (vehiculo instanceof Automovil){
+                    pago = new Pago(getNombre(), vehiculo.getPlaca(), vehiculo.getMembresia().getTipoMembresia(), horaEntrada, horasCobradas*tarifa.getPrecioAutomovilHora());
                     sumaEspaciosAutomovil();
-//                    eliminarVehiculo(ve)
+                    eliminarVehiculo(placa);
+                }
+            }
 
             if(vehiculo.getPlaca().equals(placa)){
-                if (vehiculo instanceof Moto)
-                    pago = horasCobradas * Tarifa.getPrecioMotoHora();
+                if (vehiculo instanceof Moto){
+                    pago = new Pago(getNombre(), vehiculo.getPlaca(), vehiculo.getMembresia().getTipoMembresia(), horaEntrada, horasCobradas*tarifa.getPrecioMotoHora());
                     sumaEspaciosMoto();
+                    eliminarVehiculo(placa);
+                }
+            }
 
             if(vehiculo.getPlaca().equals(placa)){
-                if (vehiculo instanceof Camion)
-                    pago = horasCobradas * Tarifa.getPrecioCamionHora();
+                if (vehiculo instanceof Camion){
+                    pago = new Pago(getNombre(), vehiculo.getPlaca(), vehiculo.getMembresia().getTipoMembresia(), horaEntrada, horasCobradas*tarifa.getPrecioCamionHora());
                     sumaEspaciosCamion();
+                    eliminarVehiculo(placa);
+                }
+            }
         }
         listaVehiculos.remove(vehiculo);
         return pago;
@@ -429,7 +467,7 @@ public class Parqueadero {
     public boolean sumaEspaciosCamion(){
         int espacios = espaciosDisponibles.getEspaciosCamion();
         boolean centinela = false;
-        if(espacios != null){
+        if(espacios != 0){
             espaciosDisponibles.setEspaciosCamion(espacios+1);
             centinela = true;
         }
@@ -441,7 +479,7 @@ public class Parqueadero {
     public boolean sumaEspaciosMoto(){
         int espacios = espaciosDisponibles.getEspaciosMoto();
         boolean centinela = false;
-        if(espacios != null){
+        if(espacios != 0){
             espaciosDisponibles.setEspaciosMoto(espacios+1);
             centinela = true;
         }
@@ -453,7 +491,7 @@ public class Parqueadero {
     public boolean sumaEspaciosAutomovil(){
         int espacios = espaciosDisponibles.getEspaciosAutomovil();
         boolean centinela = false;
-        if(espacios != null){
+        if(espacios != 0){
             espaciosDisponibles.setEspaciosAutomovil(espacios+1);
             centinela = true;
         }
@@ -500,12 +538,15 @@ public class Parqueadero {
     }
     
     public void TerminoMembresia(String placa) {
+        LocalDate fin;
 		for (Vehiculo vehiculo : listaVehiculos) {
 			if (vehiculo.getPlaca().equals(placa)) {
-				
 				LocalDate actual = LocalDate.now();
-				vehiculo.getMembresia().getFinMembresia();
-				
+				fin = vehiculo.getMembresia().getFinMembresia();
+                if(actual == fin){
+                    listaVehiculos.remove(placa);
+
+                }
 			}
 		}
 	}

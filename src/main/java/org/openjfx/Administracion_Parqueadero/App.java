@@ -52,7 +52,7 @@ public class App extends Application {
         parqueadero.crearEspaciposDisponibles(espaciosDisponibles);
         Tarifa tarifa = new Tarifa(100, 150, 200, 20000, 35000, 30000, 50000, 95000, 80000, 200000, 350000, 300000);
         parqueadero.crearTarifa(tarifa);
-        Membresia membresia = new Membresia(TipoMembresia.MESAUTO, LocalDate.now(), LocalDate.now());
+        Membresia membresia = new Membresia(TipoMembresia.MESAUTO, LocalDate.now(), LocalDate.of(2025, 6, 25));
         Vehiculo vehiculo = new Vehiculo("123", "Azul", "2020", membresia);
         parqueadero.crearVehiculoMembresia(vehiculo, "Automovil");
         Pago pago = new Pago(parqueadero.getNombre(), "1234" ,TipoMembresia.MESAUTO, LocalDate.now(), 100);
