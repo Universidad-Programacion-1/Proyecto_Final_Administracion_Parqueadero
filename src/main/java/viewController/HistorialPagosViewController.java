@@ -29,7 +29,13 @@ public class HistorialPagosViewController {
     private TableColumn<HistorialPagos, String> tbcMembresia;
 
     @FXML
+    private DatePicker cbxFechaFinal;
+
+    @FXML
     private DatePicker cbxFechaInicial;
+    
+    @FXML
+    private Button btnFiltro;
 
     @FXML
     private Button dtnAtras;
@@ -51,16 +57,12 @@ public class HistorialPagosViewController {
     
     @FXML
     private Button btnPagoVehiculoTemporal;
-
-    @FXML
-    void onPagoVehiculoTemporal() {
-
-    }
     
     @FXML
-    void onPagoVehiculoMembresia() {
-
+    void onFiltrar() {
+    	filtrarHistorilPago();
     }
+    
     @FXML
     void onOpenMenu() {
     	app.GestionarParqueadero();
@@ -112,4 +114,10 @@ public class HistorialPagosViewController {
     private void obtenertHistorialPagos() {
         listHistorialPagos.addAll(historialPagosController.obtenerListaHistorialPagos());
     }
+    
+    public  void filtrarHistorilPago() {
+		listHistorialPagos.addAll(historialPagosController.filtrarPagos(cbxFechaInicial.getValue(), cbxFechaFinal.getValue()));
+		tblListHistorialPagos.getItems().clear();
+        tblListHistorialPagos.setItems(listHistorialPagos);
+	}
 }

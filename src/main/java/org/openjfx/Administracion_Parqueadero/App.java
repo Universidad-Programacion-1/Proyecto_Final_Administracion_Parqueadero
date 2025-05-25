@@ -74,7 +74,7 @@ public class App extends Application {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        
+  
     }
     
     public void CrearCliente() {

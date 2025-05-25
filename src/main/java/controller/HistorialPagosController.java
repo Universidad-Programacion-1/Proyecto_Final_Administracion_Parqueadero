@@ -1,6 +1,8 @@
 package controller;
 
+import java.time.LocalDate;
 import java.util.Collection;
+import java.util.Date;
 
 import model.HistorialPagos;
 import model.Parqueadero;
@@ -17,4 +19,8 @@ public class HistorialPagosController {
     public Collection<HistorialPagos> obtenerListaHistorialPagos() {
         return parqueadero.gethistorialPagos();
     }
+    
+    public Collection<HistorialPagos> filtrarPagos(LocalDate inicio, LocalDate fin) {
+		return parqueadero.filtrarPagosPorFecha(inicio, fin);
+	}
 }
