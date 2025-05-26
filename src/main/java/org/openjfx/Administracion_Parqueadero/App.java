@@ -4,7 +4,11 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
 import javafx.stage.Stage;
 import viewController.CrearClienteViewController;
 import viewController.CrearVehiculoViewController;
@@ -14,6 +18,7 @@ import viewController.GestionTarifasViewController;
 import viewController.HistorialPagosViewController;
 import viewController.MenuParqueaderoViewController;
 import viewController.PagosViewController;
+import javafx.scene.layout.*;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -52,14 +57,21 @@ public class App extends Application {
         parqueadero.crearEspaciposDisponibles(espaciosDisponibles);
         Tarifa tarifa = new Tarifa(100, 150, 200, 20000, 35000, 30000, 50000, 95000, 80000, 200000, 350000, 300000);
         parqueadero.crearTarifa(tarifa);
-        Membresia membresia = new Membresia(TipoMembresia.MESAUTO, LocalDate.now(), LocalDate.of(2025, 6, 25));
+        Membresia membresia = new Membresia(TipoMembresia.MESAUTO, LocalDate.of(2025, 4, 25), LocalDate.of(2025, 5, 25));
         Vehiculo vehiculo = new Vehiculo("123", "Azul", "2020", membresia);
         parqueadero.crearVehiculoMembresia(vehiculo, "Automovil");
-        Pago pago = new Pago(parqueadero.getNombre(), "1234" ,TipoMembresia.MESAUTO, LocalDate.now(), 100);
+        Pago pago = new Pago(parqueadero.getNombre(), "1234" ,TipoMembresia.MESAUTO, LocalDate.of(2024, 5, 8), 100);
+        Pago pago1 = new Pago(parqueadero.getNombre(), "12345" ,TipoMembresia.MESAUTO, LocalDate.of(2024, 8, 4), 100);
+        Pago pago2 = new Pago(parqueadero.getNombre(), "12346" ,TipoMembresia.MESAUTO, LocalDate.of(2025, 1, 10), 100);
+        Pago pago3 = new Pago(parqueadero.getNombre(), "12347" ,TipoMembresia.MESAUTO, LocalDate.of(2025, 4, 20), 100);
         parqueadero.crearHistorialPagos(pago);
+        parqueadero.crearHistorialPagos(pago1);
+        parqueadero.crearHistorialPagos(pago2);
+        parqueadero.crearHistorialPagos(pago3);
     }
     
     public void GestionarParqueadero() {
+    	parqueadero.TerminoMembresia();
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(App.class.getResource("GestionParqueadero.fxml"));
@@ -182,11 +194,20 @@ public class App extends Application {
     
     public void GestionMenuParqueadero() {
         try {
-            FXMLLoader loader = new FXMLLoader();
+        	FXMLLoader loader = new FXMLLoader();
             loader.setLocation(App.class.getResource("MenuParqueadero.fxml"));
             AnchorPane rootLayout = (AnchorPane) loader.load();
             MenuParqueaderoViewController menuParqueadero = loader.getController();
             menuParqueadero.setApp(this);
+            
+        	Image imagenFondo = new Image("file:/C:/Users/ruizc/OneDrive/Imágenes/Screenshots/Screenshot 2024-11-28 174254.png"); // usa la ruta correcta
+            BackgroundImage fondo = new BackgroundImage(imagenFondo,
+                    BackgroundRepeat.NO_REPEAT,
+                    BackgroundRepeat.NO_REPEAT,
+                    BackgroundPosition.DEFAULT,
+                    new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, false, false, true, false));
+
+            rootLayout.setBackground(new Background(fondo));
 
             Scene scene = new Scene(rootLayout);
             primaryStage.setScene(scene);

@@ -116,7 +116,7 @@ public class HistorialPagosViewController {
     }
     
     public  void filtrarHistorilPago() {
-		listHistorialPagos.addAll(historialPagosController.filtrarPagos(cbxFechaInicial.getValue(), cbxFechaFinal.getValue()));
+		System.out.println("Falsooooooooooooooooooooooooo"+listHistorialPagos.addAll(historialPagosController.filtrarPagos(cbxFechaInicial.getValue(), cbxFechaFinal.getValue())));
 		tblListHistorialPagos.getItems().clear();
         tblListHistorialPagos.setItems(listHistorialPagos);
 	}

@@ -10,7 +10,7 @@ import java.util.LinkedList;
 public class Parqueadero {
 
 	private String nombre;
-	private Vehiculo vehiculo;
+//	private Vehiculo vehiculo;
 	private Membresia membresia;
 	private Tarifa tarifa;
 	private Pago pago;
@@ -403,14 +403,13 @@ public class Parqueadero {
         Pago pago= null;
 
         LocalDate horaSalida = LocalDate.now();
-        LocalDate horaEntrada = vehiculo.getFechaIngreso();
-
-        long minutos = Duration.between(horaEntrada, horaSalida).toMinutes();
-        long horasCobradas = (long) Math.ceil(minutos / 60.0); 
-
+        
         for(Vehiculo vehiculo : listaVehiculos){
-            if(vehiculo.getPlaca().equals(placa)){
+            if(vehiculo.getPlaca().equals(placa)){ 
                 if (vehiculo instanceof Automovil){
+                	LocalDate horaEntrada = vehiculo.getFechaIngreso();
+                    long minutos = Duration.between(horaEntrada, horaSalida).toMinutes();
+                    long horasCobradas = (long) Math.ceil(minutos / 60.0);
                     pago = new Pago(getNombre(), vehiculo.getPlaca(), vehiculo.getMembresia().getTipoMembresia(), horaEntrada, horasCobradas*tarifa.getPrecioAutomovilHora());
                     sumaEspaciosAutomovil();
                     eliminarVehiculo(placa);
@@ -419,6 +418,9 @@ public class Parqueadero {
 
             if(vehiculo.getPlaca().equals(placa)){
                 if (vehiculo instanceof Moto){
+                	LocalDate horaEntrada = vehiculo.getFechaIngreso();
+                    long minutos = Duration.between(horaEntrada, horaSalida).toMinutes();
+                    long horasCobradas = (long) Math.ceil(minutos / 60.0);
                     pago = new Pago(getNombre(), vehiculo.getPlaca(), vehiculo.getMembresia().getTipoMembresia(), horaEntrada, horasCobradas*tarifa.getPrecioMotoHora());
                     sumaEspaciosMoto();
                     eliminarVehiculo(placa);
@@ -427,13 +429,16 @@ public class Parqueadero {
 
             if(vehiculo.getPlaca().equals(placa)){
                 if (vehiculo instanceof Camion){
+                	LocalDate horaEntrada = vehiculo.getFechaIngreso();
+                    long minutos = Duration.between(horaEntrada, horaSalida).toMinutes();
+                    long horasCobradas = (long) Math.ceil(minutos / 60.0);
                     pago = new Pago(getNombre(), vehiculo.getPlaca(), vehiculo.getMembresia().getTipoMembresia(), horaEntrada, horasCobradas*tarifa.getPrecioCamionHora());
                     sumaEspaciosCamion();
                     eliminarVehiculo(placa);
                 }
             }
         }
-        listaVehiculos.remove(vehiculo);
+//        listaVehiculos.remove(vehiculo);
         return pago;
     }
 
@@ -453,12 +458,13 @@ public class Parqueadero {
     public Collection<HistorialPagos> filtrarPagosPorFecha(LocalDate fechaInicio, LocalDate fechaSalida) {
         Collection<HistorialPagos> resultado = new ArrayList<>();
 
+        
         for (HistorialPagos pago : historialPagos) {
             LocalDate fecha = pago.getFecha();
-
             if ((fecha.isEqual(fechaInicio) || fecha.isAfter(fechaInicio)) &&
                 (fecha.isEqual(fechaSalida) || fecha.isBefore(fechaSalida))) {
                 resultado.add(pago);
+                System.out.println("Entro a addddddd");
             }
         }
 
@@ -537,14 +543,15 @@ public class Parqueadero {
         return centinela;
     }
     
-    public void TerminoMembresia(String placa) {
+    public void TerminoMembresia() {
+    	//No se puede pedir la paca coja la losta de vehicu;ps y compare uno por uno a ver cuales ya se vencieron
         LocalDate fin;
 		for (Vehiculo vehiculo : listaVehiculos) {
-			if (vehiculo.getPlaca().equals(placa)) {
+			if (vehiculo.getMembresia() != null) {
 				LocalDate actual = LocalDate.now();
 				fin = vehiculo.getMembresia().getFinMembresia();
                 if(actual == fin){
-                    listaVehiculos.remove(placa);
+                    listaVehiculos.remove(vehiculo.getPlaca());
 
                 }
 			}
