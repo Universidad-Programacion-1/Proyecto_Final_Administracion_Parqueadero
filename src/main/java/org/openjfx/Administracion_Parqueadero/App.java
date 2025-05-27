@@ -203,14 +203,14 @@ public class App extends Application {
             MenuParqueaderoViewController menuParqueadero = loader.getController();
             menuParqueadero.setApp(this);
             
-        	Image imagenFondo = new Image("file:/C:/Users/ruizc/OneDrive/Imágenes/Screenshots/Screenshot 2024-11-28 174254.png"); // usa la ruta correcta
-            BackgroundImage fondo = new BackgroundImage(imagenFondo,
-                    BackgroundRepeat.NO_REPEAT,
-                    BackgroundRepeat.NO_REPEAT,
-                    BackgroundPosition.DEFAULT,
-                    new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, false, false, true, false));
-
-            rootLayout.setBackground(new Background(fondo));
+//        	Image imagenFondo = new Image("file:/C:/Users/ruizc/OneDrive/Imágenes/Screenshots/Screenshot 2024-11-28 174254.png"); // usa la ruta correcta
+//            BackgroundImage fondo = new BackgroundImage(imagenFondo,
+//                    BackgroundRepeat.NO_REPEAT,
+//                    BackgroundRepeat.NO_REPEAT,
+//                    BackgroundPosition.DEFAULT,
+//                    new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, false, false, true, false));
+//
+//            rootLayout.setBackground(new Background(fondo));
 
             Scene scene = new Scene(rootLayout);
             primaryStage.setScene(scene);

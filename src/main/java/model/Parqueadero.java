@@ -447,35 +447,34 @@ public class Parqueadero {
             horasCobradas = (long) Math.ceil(1 / 60.0); 
         }
         
-
-        for(Vehiculo vehiculo2 : listaVehiculos){
-            if(vehiculo.getPlaca().equals(placa)){
-                if (vehiculo instanceof Automovil){
-                    long suma = tarifa.getPrecioAutomovilHora()*horasCobradas;
-                    System.out.println("SUMA"+suma);
-                    pago = new Pago(getNombre(), vehiculo.getPlaca(), null, horaEntrada, horasCobradas*tarifa.getPrecioAutomovilHora());
-                    sumaEspaciosAutomovil();
-                    eliminarVehiculo(placa);
-                }
-            }
-
-            if(vehiculo.getPlaca().equals(placa)){
-                if (vehiculo instanceof Moto){
-                    pago = new Pago(getNombre(), vehiculo.getPlaca(), null, horaEntrada, horasCobradas*tarifa.getPrecioMotoHora());
-                    sumaEspaciosMoto();
-                    eliminarVehiculo(placa);
-                }
-            }
-
-            if(vehiculo.getPlaca().equals(placa)){
-                if (vehiculo instanceof Camion){
-                    pago = new Pago(getNombre(), vehiculo.getPlaca(), null, horaEntrada, horasCobradas*tarifa.getPrecioCamionHora());
-                    sumaEspaciosCamion();
-                    eliminarVehiculo(placa);
-                }
+        if(vehiculo.getPlaca().equals(placa)){
+            if (vehiculo instanceof Automovil){
+                long suma = tarifa.getPrecioAutomovilHora()*horasCobradas;
+                System.out.println("SUMA"+suma);
+                pago = new Pago(getNombre(), vehiculo.getPlaca(), null, horaEntrada, horasCobradas*tarifa.getPrecioAutomovilHora());
+                sumaEspaciosAutomovil();
+                crearHistorialPagos(pago);
+                eliminarVehiculo(placa);
             }
         }
-        //listaVehiculos.remove(vehiculo);
+
+        if(vehiculo.getPlaca().equals(placa)){
+            if (vehiculo instanceof Moto){
+                pago = new Pago(getNombre(), vehiculo.getPlaca(), null, horaEntrada, horasCobradas*tarifa.getPrecioMotoHora());
+                sumaEspaciosMoto();
+                crearHistorialPagos(pago);
+                eliminarVehiculo(placa);
+            }
+        }
+
+        if(vehiculo.getPlaca().equals(placa)){
+            if (vehiculo instanceof Camion){
+                pago = new Pago(getNombre(), vehiculo.getPlaca(), null, horaEntrada, horasCobradas*tarifa.getPrecioCamionHora());
+                sumaEspaciosCamion();
+                crearHistorialPagos(pago);
+                eliminarVehiculo(placa);
+            }
+        }
         return pago;
     } 
     
