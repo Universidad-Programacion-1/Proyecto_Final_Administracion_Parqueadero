@@ -46,18 +46,18 @@
                         <Button fx:id="btnActualizarVehiculo" layoutX="541.0" layoutY="351.0" mnemonicParsing="false" onAction="#onActualizarVehiculo" text="Actualizar Vehiculo" />
                         <Button fx:id="btbAgregarVehiculo" layoutX="265.0" layoutY="351.0" mnemonicParsing="false" onAction="#onAgregarVehiculo" text="Agregar Vehiculo" />
                         <Button fx:id="dtnAtras" layoutX="871.0" layoutY="14.0" mnemonicParsing="false" onAction="#onOpenMenu" prefHeight="37.0" prefWidth="44.0" style="-fx-background-color: red; -fx-border-color: black;" text="X" />
-                        <Label layoutX="505.0" layoutY="153.0" prefHeight="17.0" prefWidth="64.0" text="Fecha :">
+                        <Label layoutX="505.0" layoutY="153.0" prefHeight="17.0" prefWidth="64.0" text="Fecha:">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Label>
-                        <Label layoutX="505.0" layoutY="204.0" prefHeight="27.0" prefWidth="108.0" text="Membresia">
+                        <Label layoutX="505.0" layoutY="204.0" prefHeight="27.0" prefWidth="108.0" text="Membresia:">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Label>
                         <DatePicker fx:id="cbxFechaInicial" layoutX="658.0" layoutY="152.0" prefHeight="31.0" prefWidth="153.0" />
-                        <Label layoutX="505.0" layoutY="251.0" prefHeight="27.0" prefWidth="153.0" text="Tipo de Vehiculo">
+                        <Label layoutX="505.0" layoutY="251.0" prefHeight="27.0" prefWidth="153.0" text="Tipo de Vehiculo:">
                            <font>
                               <Font size="18.0" />
                            </font>

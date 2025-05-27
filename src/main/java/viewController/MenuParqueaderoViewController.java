@@ -10,6 +10,7 @@ import org.openjfx.Administracion_Parqueadero.App;
 import controller.MenuParqueaderoController;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.scene.control.Label;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -64,6 +65,15 @@ public class MenuParqueaderoViewController {
     @FXML
     private TableColumn<Vehiculo, String> tbcTipoMembresia;
     
+    @FXML
+    private Label LabelEspacioMoto;
+
+    @FXML
+    private Label LabelEspacioCamion;
+    
+    @FXML
+    private Label LabelEspacioAutomovil;
+    
 
     @FXML
     void onPagoVehiculoTemporal() {
@@ -78,6 +88,7 @@ public class MenuParqueaderoViewController {
     @FXML
     void onAgregarVehiculo() {
     	crearVehiculoTemporal();
+    	espaciosDispponibles();
     }
 
     @FXML
@@ -101,6 +112,7 @@ public class MenuParqueaderoViewController {
   }
     
 	private void initView() {
+		espaciosDispponibles();
 	    // Traer los datos del cliente a la tabla
 		initDataBinding();
 		
@@ -142,6 +154,12 @@ public class MenuParqueaderoViewController {
             }
         });
     }
+	
+	private void espaciosDispponibles() {
+		LabelEspacioAutomovil.setText(String.valueOf(menuParqueaderoController.EspacioAutomovil()));
+        LabelEspacioMoto.setText(String.valueOf(menuParqueaderoController.EspacioMoto()));
+        LabelEspacioCamion.setText(String.valueOf(menuParqueaderoController.EspacioCamion()));
+	}
 	
 	private void obtenerVehiculo() {
         listVehiculos.addAll(menuParqueaderoController.obtenerListaVehiculos());
