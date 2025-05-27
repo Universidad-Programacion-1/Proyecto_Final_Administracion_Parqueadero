@@ -1,6 +1,7 @@
 package model;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class Pago {
 
@@ -10,13 +11,21 @@ public class Pago {
 	private TipoMembresia membresia;
 	private long totalpagar;
 	private LocalDate fechaEntrada;
+	private LocalDateTime HoraEntradaTemporal;
 
-	public Pago(String parqueadero, String placa, TipoMembresia membresia, LocalDate fechaEntrada, long totalpagar) {
+	public Pago(String parqueadero, String placa, TipoMembresia membresia, LocalDate horaEntrada, long totalpagar) {
 		this.parqueadero = parqueadero;
 		this.placa = placa;
 		this.membresia = membresia;
 		this.totalpagar = totalpagar;
-		this.fechaEntrada = fechaEntrada;
+		this.fechaEntrada = horaEntrada;
+	}
+	public Pago(String parqueadero, String placa, TipoMembresia membresia, LocalDateTime horaEntrada, long totalpagar) {
+		this.parqueadero = parqueadero;
+		this.placa = placa;
+		this.membresia = membresia;
+		this.totalpagar = totalpagar;
+		this.HoraEntradaTemporal = horaEntrada;
 	}
 
 	public String getPlaca() {
@@ -66,6 +75,13 @@ public class Pago {
 	public void setFechaEntrada(LocalDate fechaEntrada) {
 		this.fechaEntrada = fechaEntrada;
 	}
+	public LocalDateTime getHoraEntradaTemporal() {
+		return HoraEntradaTemporal;
+	}
+	public void setHoraEntradaTemporal(LocalDateTime horaEntradaTemporal) {
+		HoraEntradaTemporal = horaEntradaTemporal;
+	}
+	
 
 	
 

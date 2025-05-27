@@ -9,7 +9,7 @@ public class Vehiculo {
 	private String placa;
 	private String color;
 	private String modelo;
-	private LocalDate fechaIngreso;
+	private LocalDateTime fechaIngreso;
 
 	public Vehiculo(String placa, String color, String modelo, Membresia membresia) {
 
@@ -18,9 +18,9 @@ public class Vehiculo {
 		this.modelo = modelo;
 		this.membresia = membresia;
 	}
-	public Vehiculo(String placa, LocalDate fechaIngreso) {
+	public Vehiculo(String placa, LocalDateTime fechaIngreso) {
 		this.placa = placa;
-		this.fechaIngreso = fechaIngreso;
+		this.fechaIngreso = LocalDateTime.now();
 	}
 	public String getPlaca() {
 		return placa;
@@ -46,11 +46,13 @@ public class Vehiculo {
 	public void setMembresia(Membresia membresia) {
 		this.membresia = membresia;
 	}
-	public LocalDate getFechaIngreso() {
+	public LocalDateTime getFechaIngreso() {
 		return fechaIngreso;
 	}
-	public void setFechaIngreso(LocalDate fechaIngreso) {
-		this.fechaIngreso = fechaIngreso;
+	public void setFechaIngreso(LocalDateTime fechaIngreso) {
+		this.fechaIngreso = LocalDateTime.now();
 	}
+	
+	
 	
 }

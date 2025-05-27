@@ -5,10 +5,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BackgroundImage;
-import javafx.scene.layout.BackgroundPosition;
-import javafx.scene.layout.BackgroundRepeat;
 import javafx.stage.Stage;
 import viewController.CrearClienteViewController;
 import viewController.CrearVehiculoViewController;
@@ -22,6 +18,7 @@ import javafx.scene.layout.*;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import model.Automovil;
 import model.EspaciosDisponibles;
@@ -60,18 +57,25 @@ public class App extends Application {
         Membresia membresia = new Membresia(TipoMembresia.MESAUTO, LocalDate.of(2025, 4, 25), LocalDate.of(2025, 5, 25));
         Vehiculo vehiculo = new Vehiculo("123", "Azul", "2020", membresia);
         parqueadero.crearVehiculoMembresia(vehiculo, "Automovil");
+        /* 
         Pago pago = new Pago(parqueadero.getNombre(), "1234" ,TipoMembresia.MESAUTO, LocalDate.of(2024, 5, 8), 100);
+        Pago pago7 = new Pago(parqueadero.getNombre(), "7777", null,LocalDateTime.of(2025, 5, 26, 12, 30), 10000);
         Pago pago1 = new Pago(parqueadero.getNombre(), "12345" ,TipoMembresia.MESAUTO, LocalDate.of(2024, 8, 4), 100);
-        Pago pago2 = new Pago(parqueadero.getNombre(), "12346" ,TipoMembresia.MESAUTO, LocalDate.of(2025, 1, 10), 100);
+        Pago pago2 = new Pago(parqueadero.getNombre(), "12346" ,TipoMembresia.MESAUTO, LocalDate.of(2003, 1, 10), 100);
         Pago pago3 = new Pago(parqueadero.getNombre(), "12347" ,TipoMembresia.MESAUTO, LocalDate.of(2025, 4, 20), 100);
         parqueadero.crearHistorialPagos(pago);
         parqueadero.crearHistorialPagos(pago1);
         parqueadero.crearHistorialPagos(pago2);
         parqueadero.crearHistorialPagos(pago3);
+        parqueadero.crearHistorialPagos(pago7);
+        */
+        parqueadero.prueba();
+
+
     }
     
     public void GestionarParqueadero() {
-    	parqueadero.TerminoMembresia();
+    	parqueadero.TerminoMembresia(null);
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(App.class.getResource("GestionParqueadero.fxml"));
@@ -88,6 +92,7 @@ public class App extends Application {
         }
   
     }
+        
     
     public void CrearCliente() {
         try {

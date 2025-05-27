@@ -1,6 +1,7 @@
 
 package viewController;
 
+import java.time.LocalDate;
 import java.util.Collection;
 
 import org.openjfx.Administracion_Parqueadero.App;
@@ -92,6 +93,7 @@ public class HistorialPagosViewController {
 		// Agregar los elementos a la tabla
 //        ObservableList<Vehiculo> listaActual = nuevaListaVehiculosMembresia(listVehiculos);
         tblListHistorialPagos.setItems(listHistorialPagos);
+        System.out.println("DESCRIPCION"+ listHistorialPagos);
 
         // Seleccionar elemento de la tabla
     }
@@ -114,10 +116,31 @@ public class HistorialPagosViewController {
     private void obtenertHistorialPagos() {
         listHistorialPagos.addAll(historialPagosController.obtenerListaHistorialPagos());
     }
-    
+    /* 
     public  void filtrarHistorilPago() {
-		System.out.println("Falsooooooooooooooooooooooooo"+listHistorialPagos.addAll(historialPagosController.filtrarPagos(cbxFechaInicial.getValue(), cbxFechaFinal.getValue())));
+        System.out.println("PRUEBA FECHAAAAA"+ historialPagosController.filtrarPagos(cbxFechaInicial.getValue(), cbxFechaFinal.getValue()));
+        System.out.println("--------------------------");
+        listHistorialPagos.clear();
+        System.out.println(listHistorialPagos);
+        listHistorialPagos.addAll(historialPagosController.filtrarPagos(cbxFechaInicial.getValue(),cbxFechaFinal.getValue()));
+        initDataBinding();
+        listHistorialPagos.setAll(listHistorialPagos);
 		tblListHistorialPagos.getItems().clear();
+        System.out.println("CARLOS"+listHistorialPagos);
         tblListHistorialPagos.setItems(listHistorialPagos);
-	}
+	} */
+
+    public void filtrarHistorilPago() {
+        LocalDate fechaInicio = cbxFechaInicial.getValue();
+        LocalDate fechaFinal = cbxFechaFinal.getValue();
+        
+        if (fechaInicio != null && fechaFinal != null) {
+            Collection<HistorialPagos> filtrados = historialPagosController.filtrarPagos    (fechaInicio, fechaFinal);
+            listHistorialPagos.setAll(filtrados); // actualiza bien la lista
+            tblListHistorialPagos.setItems(listHistorialPagos);
+        } else {
+            System.out.println("⚠️ Alguna de las fechas es nula");
+        }
+    }
+
 }

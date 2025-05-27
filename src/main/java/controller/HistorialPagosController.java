@@ -21,6 +21,8 @@ public class HistorialPagosController {
     }
     
     public Collection<HistorialPagos> filtrarPagos(LocalDate inicio, LocalDate fin) {
+        System.out.println("XXXXXXXXXXXXXXXXXXXXX"+ parqueadero.filtrarPagosPorFecha(inicio, fin));
 		return parqueadero.filtrarPagosPorFecha(inicio, fin);
 	}
+    
 }
