@@ -8,7 +8,7 @@ public class Moto extends Vehiculo{
         super(placa, color, modelo, membresia);
     }
 
-    public Moto(String placa, LocalDate fechaIngreso) {
+    public Moto(String placa, LocalDateTime fechaIngreso) {
         super(placa, fechaIngreso);
         
     }

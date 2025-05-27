@@ -2,6 +2,7 @@ package viewController;
 
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Iterator;
 
 import org.openjfx.Administracion_Parqueadero.App;
@@ -180,10 +181,16 @@ public class MenuParqueaderoViewController {
         cbxTipoVehiculo.setValue(null);
     }
 
+    //private Vehiculo buildVehiculoTemporal() {
+    //    Vehiculo vehiculo = new Vehiculo(txtPlaca.getText(), cbxFechaInicial.getValue());
+    //    return vehiculo;
+    //}
     private Vehiculo buildVehiculoTemporal() {
-        Vehiculo vehiculo = new Vehiculo(txtPlaca.getText(), cbxFechaInicial.getValue());
-        return vehiculo;
-    }
+    LocalDate fecha = cbxFechaInicial.getValue();
+    LocalDateTime fechaHora = fecha.atStartOfDay(); // o usa LocalTime.now() si prefieres
+    Vehiculo vehiculo = new Vehiculo(txtPlaca.getText(), fechaHora);
+    return vehiculo;
+}
     
     private void PagoVehiculoMembresia() {
     	

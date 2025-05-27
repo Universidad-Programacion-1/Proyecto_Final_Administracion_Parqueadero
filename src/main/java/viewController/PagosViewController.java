@@ -1,5 +1,7 @@
 package viewController;
 
+import java.time.LocalDateTime;
+
 import org.openjfx.Administracion_Parqueadero.App;
 
 import controller.VehiculoController;
@@ -50,10 +52,16 @@ public class PagosViewController {
         if(pago.getMembresia() != null) {
         	labelTipoMembresia.setText(String.valueOf(pago.getMembresia()));
         }else {
-        	labelTipoMembresia.setText("No tiene Memnresia");
+        	labelTipoMembresia.setText("No tiene Membresia");
         }
+        System.out.println("PRUEBA DESDE INTERFACES"+ pago.getTotalpagar());
         labelTotalApagar.setText(String.valueOf(pago.getTotalpagar()));
-        labelFecha.setText(String.valueOf(pago.getFechaEntrada()));
+
+        if(pago.getFechaEntrada() != null) {
+        	labelFecha.setText(String.valueOf(pago.getFechaEntrada()));
+        }else {
+        	labelFecha.setText(String.valueOf(LocalDateTime.now()));
+        }
 
     }
     
