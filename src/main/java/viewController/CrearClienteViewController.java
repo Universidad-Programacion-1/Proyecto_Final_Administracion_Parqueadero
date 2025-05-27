@@ -50,7 +50,6 @@ public class CrearClienteViewController {
     @FXML
     private Button btbEliminarCliente;
 
-
     @FXML
     private TableColumn<Cliente, String> tbcCedula;
 
@@ -74,12 +73,12 @@ public class CrearClienteViewController {
     	actualizarCliente();
     }
 
-	@FXML
+    @FXML
     void onAgregarCliente() {
 		crearCliente();
     }
 
-	@FXML
+    @FXML
 	void onEliminarCliente() {
 		eliminarCliente();	
 	}
@@ -89,120 +88,120 @@ public class CrearClienteViewController {
     	app.GestionarParqueadero();
    }
     
-   public void setApp(App app) {
-	   this.app = app;
-   }
+    public void setApp(App app) {
+ 	   this.app = app;
+    }
    
-   @FXML
-   void initialize() {
-	   clienteController = new ClienteController(app.parqueadero);
-   		initView();
- }
+    @FXML
+    void initialize() {
+ 	   clienteController = new ClienteController(app.parqueadero);
+    		initView();
+  }
    
-   private void initView() {
-       // Traer los datos del cliente a la tabla
-       initDataBinding();
+    private void initView() {
+        // Traer los datos del cliente a la tabla
+        initDataBinding();
 
-       // Obtiene la lista
-       obtenerCliente();
+        // Obtiene la lista
+        obtenerCliente();
 
-       // Limpiar la tabla
-       tblListClientes.getItems().clear();
+        // Limpiar la tabla
+        tblListClientes.getItems().clear();
 
-       // Agregar los elementos a la tabla
-       tblListClientes.setItems(listClientes);
+        // Agregar los elementos a la tabla
+        tblListClientes.setItems(listClientes);
 
-       // Seleccionar elemento de la tabla
-       listenerSelection();
-   }
+        // Seleccionar elemento de la tabla
+        listenerSelection();
+    }
    
-   private void initDataBinding() {
-	   
-	  
-	   tbcNombre.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNombre()));
-       tbcCedula.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCedula()));
-       tbcTelefono.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getTelefono()));
-       tbcCorreo.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCorreo()));
-       tbcPlaca.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getPlaca()));
-   }
+    private void initDataBinding() {
+ 	   
+  	  
+ 	   tbcNombre.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNombre()));
+        tbcCedula.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCedula()));
+        tbcTelefono.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getTelefono()));
+        tbcCorreo.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCorreo()));
+        tbcPlaca.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getPlaca()));
+    }
    
-   private void listenerSelection() {
-	   tblListClientes.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
-		   selectedCliente = newSelection;
-           mostrarInformacionCliente(newSelection);
-       });
-   }
+    private void listenerSelection() {
+ 	   tblListClientes.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+ 		   selectedCliente = newSelection;
+            mostrarInformacionCliente(newSelection);
+        });
+    }
    
-   private void mostrarInformacionCliente(Cliente cliente) {
-       if (cliente != null) {
-    	   
-    	      	 
-           txtNombre.setText(String.valueOf(cliente.getNombre())); 
-           txtCedula.setText(String.valueOf(cliente.getCedula()));
-           txtTelefono.setText(String.valueOf(cliente.getTelefono()));            
-           txtCorreo.setText(String.valueOf(cliente.getCorreo()));
-           txtPlaca.setText(String.valueOf(cliente.getPlaca()));
-       }
-   }
+    private void mostrarInformacionCliente(Cliente cliente) {
+        if (cliente != null) {
+     	   
+     	      	 
+            txtNombre.setText(String.valueOf(cliente.getNombre())); 
+            txtCedula.setText(String.valueOf(cliente.getCedula()));
+            txtTelefono.setText(String.valueOf(cliente.getTelefono()));            
+            txtCorreo.setText(String.valueOf(cliente.getCorreo()));
+            txtPlaca.setText(String.valueOf(cliente.getPlaca()));
+        }
+    }
    
-   private void obtenerCliente() {
-	   listClientes.addAll(clienteController.obtenerListaClientes());
-   }
+    private void obtenerCliente() {
+ 	   listClientes.addAll(clienteController.obtenerListaClientes());
+    }
    
    
-   private void crearCliente() {
-       Cliente cliente = buildCliente();
-       if (clienteController.crearCliente(cliente)) {
-       	   listClientes.add(cliente);
-       	   limpiarCamposCliente();
-       }
-   }
+    private void crearCliente() {
+        Cliente cliente = buildCliente();
+        if (clienteController.crearCliente(cliente)) {
+        	   listClientes.add(cliente);
+        	   limpiarCamposCliente();
+        }
+    }
    
-   private void limpiarSeleccion() {
-	   tblListClientes.getSelectionModel().clearSelection();
-       limpiarCamposCliente();
-   }
+    private void limpiarSeleccion() {
+ 	   tblListClientes.getSelectionModel().clearSelection();
+        limpiarCamposCliente();
+    }
 
-   private void limpiarCamposCliente() {
-       txtTelefono.clear();       
-       txtNombre.clear();
-       txtCedula.clear();
-       txtCorreo.clear();
-       txtPlaca.clear();
-      
-   }
-
-   private Cliente buildCliente() {
-   	
-       Cliente cliente = new Cliente(txtNombre.getText(), txtCedula.getText(), txtTelefono.getText(),  txtCorreo.getText(), txtPlaca.getText());
-       return cliente;
+    private void limpiarCamposCliente() {
+        txtTelefono.clear();       
+        txtNombre.clear();
+        txtCedula.clear();
+        txtCorreo.clear();
+        txtPlaca.clear();
        
-   }
-   
-   private void actualizarCliente() {
-	  
-	   if (selectedCliente != null && clienteController.actualizarCliente(selectedCliente.getCedula(), buildCliente())) {
+    }
 
-           int index = listClientes.indexOf(selectedCliente);
-           System.out.println("fff"+listClientes);
-           if (index >= 0) {
-        	   listClientes.set(index, buildCliente());
-           }
-
-           tblListClientes.refresh();
-           limpiarSeleccion();
-           limpiarCamposCliente();
-       }	   				
-	}
+    private Cliente buildCliente() {
+       	
+        Cliente cliente = new Cliente(txtNombre.getText(), txtCedula.getText(), txtTelefono.getText(),  txtCorreo.getText(), txtPlaca.getText());
+        return cliente;
+        
+    }
    
-   private void eliminarCliente() {
-	   if (clienteController.eliminarCliente(txtCedula.getText())) {
-		   	listClientes.remove(selectedCliente);
-		    limpiarCamposCliente();
+    private void actualizarCliente() {
+  	  
+ 	   if (selectedCliente != null && clienteController.actualizarCliente(selectedCliente.getCedula(), buildCliente())) {
+
+            int index = listClientes.indexOf(selectedCliente);
+            System.out.println("fff"+listClientes);
+            if (index >= 0) {
+         	   listClientes.set(index, buildCliente());
+            }
+
+            tblListClientes.refresh();
             limpiarSeleccion();
+            limpiarCamposCliente();
+        }	   				
+ 	}
+   
+    private void eliminarCliente() {
+ 	   if (clienteController.eliminarCliente(txtCedula.getText())) {
+ 		   	listClientes.remove(selectedCliente);
+ 		    limpiarCamposCliente();
+             limpiarSeleccion();
 
-	   } 
-   }
+ 	   } 
+    }
    
 }
 

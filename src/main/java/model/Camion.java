@@ -9,7 +9,7 @@ public class Camion extends Vehiculo{
         super(placa, color, modelo, membresia);
     }
 
-    public Camion(String placa, LocalDate fechaIngreso) {
+    public Camion(String placa, LocalDateTime fechaIngreso) {
         super(placa, fechaIngreso);
         
     }

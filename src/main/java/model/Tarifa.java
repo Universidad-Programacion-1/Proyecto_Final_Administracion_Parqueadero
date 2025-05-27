@@ -102,7 +102,4 @@ public class Tarifa {
 	public void setPrecioAnioAutomovil(long precioAnioAutomovil) {
 		this.precioAnioAutomovil = precioAnioAutomovil;
 	}
-
-	
-
 }

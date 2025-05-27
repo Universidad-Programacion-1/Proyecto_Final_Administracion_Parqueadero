@@ -22,12 +22,23 @@ public class MenuParqueaderoController {
         return parqueadero.getListaVehiculos();
     }
 	
+	public Pago pagoVehiculoMembresia(String placa){
+		return parqueadero.crearPagoVehiculoMembresia(placa);
+	}
+  
+	public Pago pagoVehiculoTemporal(String placa){
+		return parqueadero.crearPagoVehiculoTemporal(placa);
+	}
 	
-	  public Pago pagoVehiculoMembresia(String placa){
-	      return parqueadero.crearPagoVehiculoMembresia(placa);
-	  }
-	  
-	  public Pago pagoVehiculoTemporal(String placa){
-	      return parqueadero.crearPagoVehiculoTemporal(placa);
-	  }
+	public int EspacioCamion(){
+		return parqueadero.getEspaciosDisponibles().getEspaciosCamion();
+	}
+  
+	public int EspacioMoto(){
+		return parqueadero.getEspaciosDisponibles().getEspaciosMoto();
+	}
+	
+	public int EspacioAutomovil(){
+		return parqueadero.getEspaciosDisponibles().getEspaciosAutomovil();
+	}
 }
