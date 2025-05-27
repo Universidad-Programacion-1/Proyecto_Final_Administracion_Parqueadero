@@ -28,6 +28,6 @@ public class MenuParqueaderoController {
 	  }
 	  
 	  public Pago pagoVehiculoTemporal(String placa){
-	      return parqueadero.crearPagoVehiculoMembresia(placa);
+	      return parqueadero.crearPagoVehiculoTemporal(placa);
 	  }
 }

@@ -35,11 +35,5 @@ public class EspaciosDisponibles {
 	public void setEspaciosCamion(int espaciosCamion) {
 		this.espaciosCamion = espaciosCamion;
 	}
-
-	
-
-	
-
-	
 	
 }

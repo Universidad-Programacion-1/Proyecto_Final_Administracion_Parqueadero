@@ -30,8 +30,8 @@
                         </Label>
                         
                               <TextField fx:id="txtPlaca" layoutX="265.0" layoutY="189.0" prefHeight="31.0" prefWidth="168.0" />
-                        <Button fx:id="btnActualizarVehiculo" layoutX="555.0" layoutY="310.0" mnemonicParsing="false" onAction="#onActualizarVehiculo" text="Pago Vehiculo" />
-                        <Button fx:id="btbAgregarVehiculo" layoutX="265.0" layoutY="310.0" mnemonicParsing="false" onAction="#onAgregarVehiculo" text="Agregar Vehiculo" />
+                        <Button fx:id="btnPagoVehiculoMembresia" layoutX="175.0" layoutY="335.0" mnemonicParsing="false" onAction="#onPagoVehiculoMembresia" text="Pago Vehiculo Membresia" />
+                        <Button fx:id="btbAgregarVehiculo" layoutX="411.0" layoutY="335.0" mnemonicParsing="false" onAction="#onAgregarVehiculo" text="Agregar Vehiculo" />
                         <Button fx:id="dtnAtras" layoutX="871.0" layoutY="14.0" mnemonicParsing="false" onAction="#onOpenMenu" prefHeight="37.0" prefWidth="44.0" style="-fx-background-color: red; -fx-border-color: black;" text="X" />
                         <Label layoutX="265.0" layoutY="116.0" prefHeight="49.0" prefWidth="211.0" text="Espacios disponibles:">
                            <font>
@@ -55,16 +55,18 @@
                            </font>
                         </Label>
                         <DatePicker fx:id="cbxFechaInicial" layoutX="266.0" layoutY="235.0" prefHeight="31.0" prefWidth="168.0" />
+                        <Button fx:id="btnPagoVehiculoTemporal" layoutX="615.0" layoutY="335.0" mnemonicParsing="false" onAction="#onPagoVehiculoTemporal" text="Pago Vehiculo Temporal" />
                      </children>
                   </Pane>
                </children>
             </AnchorPane>
           <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="0.0" minWidth="0.0" prefHeight="407.0" prefWidth="1181.0">
                <children>
-                  <TableView fx:id="tblListVehiculos" layoutX="348.0" layoutY="37.0" prefHeight="248.0" prefWidth="488.0">
+                  <TableView fx:id="tblListVehiculos" layoutX="348.0" layoutY="32.0" prefHeight="248.0" prefWidth="519.0">
                     <columns>
-                      <TableColumn fx:id="tbcPlaca" prefWidth="247.0" text="Placa" />
-                        <TableColumn fx:id="tbcHoraInicio" minWidth="4.0" prefWidth="240.0" text="Hora de Inicio" />
+                      <TableColumn fx:id="tbcPlaca" prefWidth="164.0" text="Placa" />
+                        <TableColumn fx:id="tbcHoraInicio" minWidth="4.0" prefWidth="174.0" text="Hora de Inicio" />
+                        <TableColumn fx:id="tbcTipoMembresia" minWidth="4.0" prefWidth="174.0" text="Tipo Membresia" />
                     </columns>
                   </TableView>
                </children>

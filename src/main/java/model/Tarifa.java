@@ -2,21 +2,21 @@ package model;
 
 public class Tarifa {
 	
-	private int precioMotoHora;
-	private int precioCamionHora;
-	private int precioAutomovilHora;
-	private int precioMotoMes;
-	private int precioCamionMes;
-	private int precioAutomovilMes;
-	private int precioMotoTresMeses;
-	private int precioCamionTresMeses;
-	private int precioAutomovilTresMeses;
-	private int precioAnioMoto;
-	private int precioAnioCamion;
-	private int precioAnioAutomovil;
-	public Tarifa(int precioMotoHora, int precioCamionHora, int precioAutomovilHora, int precioMotoMes,
-			int precioCamionMes, int precioAutomovilMes, int precioMotoTresMeses, int precioCamionTresMeses,
-			int precioAutomovilTresMeses, int precioAnioMoto, int precioAnioCamion, int precioAnioAutomovil) {
+	private long precioMotoHora;
+	private long precioCamionHora;
+	private long precioAutomovilHora;
+	private long precioMotoMes;
+	private long precioCamionMes;
+	private long precioAutomovilMes;
+	private long precioMotoTresMeses;
+	private long precioCamionTresMeses;
+	private long precioAutomovilTresMeses;
+	private long precioAnioMoto;
+	private long precioAnioCamion;
+	private long precioAnioAutomovil;
+	public Tarifa(long precioMotoHora, long precioCamionHora, long precioAutomovilHora, long precioMotoMes,
+			long precioCamionMes, long precioAutomovilMes, long precioMotoTresMeses, long precioCamionTresMeses,
+			long precioAutomovilTresMeses, long precioAnioMoto, long precioAnioCamion, long precioAnioAutomovil) {
 		this.precioMotoHora = precioMotoHora;
 		this.precioCamionHora = precioCamionHora;
 		this.precioAutomovilHora = precioAutomovilHora;
@@ -30,79 +30,76 @@ public class Tarifa {
 		this.precioAnioCamion = precioAnioCamion;
 		this.precioAnioAutomovil = precioAnioAutomovil;
 	}
-	public int getPrecioMotoHora() {
+	public long getPrecioMotoHora() {
 		return precioMotoHora;
 	}
-	public void setPrecioMotoHora(int precioMotoHora) {
+	public void setPrecioMotoHora(long precioMotoHora) {
 		this.precioMotoHora = precioMotoHora;
 	}
-	public int getPrecioCamionHora() {
+	public long getPrecioCamionHora() {
 		return precioCamionHora;
 	}
-	public void setPrecioCamionHora(int precioCamionHora) {
+	public void setPrecioCamionHora(long precioCamionHora) {
 		this.precioCamionHora = precioCamionHora;
 	}
-	public int getPrecioAutomovilHora() {
+	public long getPrecioAutomovilHora() {
 		return precioAutomovilHora;
 	}
-	public void setPrecioAutomovilHora(int precioAutomovilHora) {
+	public void setPrecioAutomovilHora(long precioAutomovilHora) {
 		this.precioAutomovilHora = precioAutomovilHora;
 	}
-	public int getPrecioMotoMes() {
+	public long getPrecioMotoMes() {
 		return precioMotoMes;
 	}
-	public void setPrecioMotoMes(int precioMotoMes) {
+	public void setPrecioMotoMes(long precioMotoMes) {
 		this.precioMotoMes = precioMotoMes;
 	}
-	public int getPrecioCamionMes() {
+	public long getPrecioCamionMes() {
 		return precioCamionMes;
 	}
-	public void setPrecioCamionMes(int precioCamionMes) {
+	public void setPrecioCamionMes(long precioCamionMes) {
 		this.precioCamionMes = precioCamionMes;
 	}
-	public int getPrecioAutomovilMes() {
+	public long getPrecioAutomovilMes() {
 		return precioAutomovilMes;
 	}
-	public void setPrecioAutomovilMes(int precioAutomovilMes) {
+	public void setPrecioAutomovilMes(long precioAutomovilMes) {
 		this.precioAutomovilMes = precioAutomovilMes;
 	}
-	public int getPrecioMotoTresMeses() {
+	public long getPrecioMotoTresMeses() {
 		return precioMotoTresMeses;
 	}
-	public void setPrecioMotoTresMeses(int precioMotoTresMeses) {
+	public void setPrecioMotoTresMeses(long precioMotoTresMeses) {
 		this.precioMotoTresMeses = precioMotoTresMeses;
 	}
-	public int getPrecioCamionTresMeses() {
+	public long getPrecioCamionTresMeses() {
 		return precioCamionTresMeses;
 	}
-	public void setPrecioCamionTresMeses(int precioCamionTresMeses) {
+	public void setPrecioCamionTresMeses(long precioCamionTresMeses) {
 		this.precioCamionTresMeses = precioCamionTresMeses;
 	}
-	public int getPrecioAutomovilTresMeses() {
+	public long getPrecioAutomovilTresMeses() {
 		return precioAutomovilTresMeses;
 	}
-	public void setPrecioAutomovilTresMeses(int precioAutomovilTresMeses) {
+	public void setPrecioAutomovilTresMeses(long precioAutomovilTresMeses) {
 		this.precioAutomovilTresMeses = precioAutomovilTresMeses;
 	}
-	public int getPrecioAnioMoto() {
+	public long getPrecioAnioMoto() {
 		return precioAnioMoto;
 	}
-	public void setPrecioAnioMoto(int precioAnioMoto) {
+	public void setPrecioAnioMoto(long precioAnioMoto) {
 		this.precioAnioMoto = precioAnioMoto;
 	}
-	public int getPrecioAnioCamion() {
+	public long getPrecioAnioCamion() {
 		return precioAnioCamion;
 	}
-	public void setPrecioAnioCamion(int precioAnioCamion) {
+	public void setPrecioAnioCamion(long precioAnioCamion) {
 		this.precioAnioCamion = precioAnioCamion;
 	}
-	public int getPrecioAnioAutomovil() {
+	public long getPrecioAnioAutomovil() {
 		return precioAnioAutomovil;
 	}
-	public void setPrecioAnioAutomovil(int precioAnioAutomovil) {
+	public void setPrecioAnioAutomovil(long precioAnioAutomovil) {
 		this.precioAnioAutomovil = precioAnioAutomovil;
 	}
-
-	
-
 }

@@ -30,10 +30,5 @@ public class Membresia {
 	public void setTipoMembresia(TipoMembresia tipoMembresia) {
 		TipoMembresia = tipoMembresia;
 	}
-	
-
-	
-
-
-	
+		
 }

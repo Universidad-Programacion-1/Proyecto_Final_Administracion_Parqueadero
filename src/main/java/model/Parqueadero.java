@@ -3,6 +3,7 @@ package model;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedList;
 
@@ -10,10 +11,10 @@ public class Parqueadero {
 
 	private String nombre;
 	private Vehiculo vehiculo;
-	private Cliente cliente;
 	private Membresia membresia;
 	private Tarifa tarifa;
 	private Pago pago;
+    private Collection<HistorialPagos> historialPagos;
     private EspaciosDisponibles espaciosDisponibles;
     private Collection<Cliente> listaClientes;
 	private Collection<Vehiculo> listaVehiculos;
@@ -25,11 +26,13 @@ public class Parqueadero {
 	public Parqueadero(String nombre, String direccion, String representante, String telefono) {
 		this.nombre = nombre;
 		this.direccion = direccion;
-		 this.listaClientes = new LinkedList<>();
         this.listaVehiculos = new LinkedList<>();
+        this.historialPagos = new LinkedList<>();
+        this.listaClientes = new LinkedList<>();
 		this.representante = representante;
 		this.telefono = telefono;
 	}
+
 
 	public String getNombre() {
 		return nombre;
@@ -62,7 +65,74 @@ public class Parqueadero {
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
+
+	public Collection<Vehiculo> getListaVehiculos() {
+		return listaVehiculos;
+	}
+
+	public void setListaVehiculos(Collection<Vehiculo> listaVehiculos) {
+		this.listaVehiculos = listaVehiculos;
+	}
+
+    public Collection<HistorialPagos> gethistorialPagos() {
+		return historialPagos;
+	}
+
+	public void sethistorialPagos(Collection<HistorialPagos> historialPagos) {
+		this.historialPagos = historialPagos;
+	}
 	
+	public EspaciosDisponibles getEspaciosDisponibles() {
+		return espaciosDisponibles;
+	}
+
+
+	public void setEspaciosDisponibles(EspaciosDisponibles espaciosDisponibles) {
+		this.espaciosDisponibles = espaciosDisponibles;
+	}
+	
+	public Collection<Cliente> getListaClientes() {
+		return listaClientes;
+	}
+	
+	public void setListaClientes(Collection<Cliente> listaClientes) {
+		this.listaClientes = listaClientes;
+	}
+	
+	public Tarifa getTarifa() {
+		return tarifa;
+	}
+
+
+	public void setTarifa(Tarifa tarifa) {
+		this.tarifa = tarifa;
+	}
+	
+	public void crearEspaciposDisponibles(EspaciosDisponibles espaciosDisponibles) {
+		this.espaciosDisponibles = espaciosDisponibles;
+	}
+
+	public boolean actualizarEspaciposDisponibles(EspaciosDisponibles espacios) {
+        boolean centinela = false;       
+        if (espacios != null) {
+        	espaciosDisponibles.setEspaciosAutomovil(espacios.getEspaciosAutomovil());
+        	espaciosDisponibles.setEspaciosCamion(espacios.getEspaciosCamion());
+        	espaciosDisponibles.setEspaciosMoto(espacios.getEspaciosMoto());
+        	restarVehiculosRegistrados();
+        }
+        return centinela;
+    }
+	
+	public void restarVehiculosRegistrados() {
+		for (Vehiculo vehiculo : listaVehiculos) {
+			if (vehiculo instanceof Automovil){
+				int espacios = espaciosDisponibles.getEspaciosAutomovil();
+				espaciosDisponibles.setEspaciosAutomovil(espacios-1);
+			
+			}
+		}
+	}
+
 	public boolean actualizarCliente(String cedula, Cliente actualizado) {
         boolean centinela = false;       
         for (Cliente cliente : listaClientes) {   
@@ -134,31 +204,52 @@ public class Parqueadero {
 		return centinela;
 	}
 
-	public Collection<Cliente> getListaClientes() {
-		return listaClientes;
-	}
-	
-	public void setListaClientes(Collection<Cliente> listaClientes) {
-		this.listaClientes = listaClientes;
-	}
-	
-	public Collection<Vehiculo> getListaVehiculos() {
-		return listaVehiculos;
-	}
-
-	public void setListaVehiculos(Collection<Vehiculo> listaVehiculos) {
-		this.listaVehiculos = listaVehiculos;
-	}
-	
-	public void crearEspacipos(EspaciosDisponibles espaciosDisponibles) {
-		this.espaciosDisponibles = espaciosDisponibles;
-	}
-
 	public boolean crearTarifa(Tarifa precio){
         System.out.println(tarifa);
         boolean centinela = false;
         this.tarifa = precio;
         return centinela = true;
+    }
+    public boolean modificarTarifa(Tarifa actualizado) {
+        boolean centinela = false;
+        if (actualizado != null) {
+            this.tarifa.setPrecioAnioAutomovil(actualizado.getPrecioAnioAutomovil());
+            this.tarifa.setPrecioAnioCamion(actualizado.getPrecioAnioCamion());
+            this.tarifa.setPrecioAnioMoto(actualizado.getPrecioAnioMoto());
+            this.tarifa.setPrecioAutomovilHora(actualizado.getPrecioAutomovilHora());
+            this.tarifa.setPrecioCamionHora(actualizado.getPrecioCamionHora());
+            this.tarifa.setPrecioMotoHora(actualizado.getPrecioMotoHora());
+            this.tarifa.setPrecioAutomovilTresMeses(actualizado.getPrecioAutomovilTresMeses());
+            this.tarifa.setPrecioCamionTresMeses(actualizado.getPrecioCamionTresMeses());
+            this.tarifa.setPrecioMotoTresMeses(actualizado.getPrecioMotoTresMeses());
+            this.tarifa.setPrecioAutomovilMes(actualizado.getPrecioAutomovilMes());
+            this.tarifa.setPrecioCamionMes(actualizado.getPrecioCamionMes());
+            this.tarifa.setPrecioMotoMes(actualizado.getPrecioMotoMes());
+            centinela = true;
+//            break;
+        }
+        
+        return centinela;
+    }
+    public boolean crearHistorialPagos(Pago pago) {
+        boolean centinela = false;
+        if (pago != null) {
+            HistorialPagos historial = new HistorialPagos(pago, LocalDate.now());
+            historialPagos.add(historial);
+            centinela = true;
+        }
+        return centinela;
+    }
+    public boolean eliminarHistorialPagos(String placa) {
+        boolean centinela = false;
+        for (HistorialPagos historialpago : historialPagos) {
+            if (historialpago.getPago().getPlaca().equals(placa)) {
+            	historialPagos.remove(historialpago);
+                centinela = true;
+                break;
+            }
+        }
+        return centinela;
     }
 
 
@@ -184,22 +275,23 @@ public class Parqueadero {
     }
     public boolean crearVehiculoTemporal(Vehiculo vehiculo, String tipoVehiculo) {
     	boolean centinela = false;
-        System.out.println(vehiculo);
+        System.out.println(tipoVehiculo);
+        System.out.println(vehiculo.getPlaca());
         if (!verificarVehiculo(vehiculo.getPlaca())) {
             if (tipoVehiculo.equals("Automovil")) {
-                Automovil auto = new Automovil(vehiculo.getPlaca(), LocalDateTime.now());
+                Automovil auto = new Automovil(vehiculo.getPlaca(), vehiculo.getFechaIngreso());
                 listaVehiculos.add(auto);
                 restaEspaciosAutomovil();
                 centinela = true;
             } 
             if (tipoVehiculo.equals("Moto")) {
-                Moto moto = new Moto(vehiculo.getPlaca(), LocalDateTime.now());
+                Moto moto = new Moto(vehiculo.getPlaca(), vehiculo.getFechaIngreso());
                 listaVehiculos.add(moto);
                 restaEspaciosMoto();
                 centinela = true;
             } 
             if (tipoVehiculo.equals("Camion")) {
-                Camion camion = new Camion(vehiculo.getPlaca(), LocalDateTime.now());
+                Camion camion = new Camion(vehiculo.getPlaca(), vehiculo.getFechaIngreso());
                 listaVehiculos.add(camion);
                 restaEspaciosCamion();
                 centinela = true;
@@ -253,10 +345,9 @@ public class Parqueadero {
             if(vehiculo.getPlaca().equals(placa)){
                 System.out.println("si entro");
                 if (vehiculo instanceof Automovil){
-                    System.out.println("Tipo de vehiculo"+ vehiculo.getMembresia().getTipoMembresia());
-                    System.out.println("Tipo membresia" + TipoMembresia.MESAUTO);
                     if(vehiculo.getMembresia().getTipoMembresia()==TipoMembresia.MESAUTO){
                         pago = new Pago(getNombre(), vehiculo.getPlaca(),vehiculo.getMembresia().getTipoMembresia() , LocalDate.now(), tarifa.getPrecioAutomovilMes());
+                        crearHistorialPagos(pago);
                     }
                 }
                 if(vehiculo instanceof Moto){
@@ -278,6 +369,36 @@ public class Parqueadero {
         return pago;
 
     }
+    public Pago crearPagoVehiculoTemporal(String placa) {
+        Pago pago;
+
+        LocalDate horaSalida = LocalDate.now();
+        LocalDate horaEntrada = vehiculo.getFechaEntrada();
+
+        long minutos = Duration.between(horaEntrada, horaSalida).toMinutes();
+        long horasCobradas = (long) Math.ceil(minutos / 60.0); 
+
+        for(Vehiculo vehiculo : listaVehiculos){
+            if(vehiculo.getPlaca().equals(placa)){
+                if (vehiculo instanceof Automovil)
+                    pago = horasCobradas * Tarifa.getPrecioAutomovilHora();
+                    sumaEspaciosAutomovil();
+//                    eliminarVehiculo(ve)
+
+            if(vehiculo.getPlaca().equals(placa)){
+                if (vehiculo instanceof Moto)
+                    pago = horasCobradas * Tarifa.getPrecioMotoHora();
+                    sumaEspaciosMoto();
+
+            if(vehiculo.getPlaca().equals(placa)){
+                if (vehiculo instanceof Camion)
+                    pago = horasCobradas * Tarifa.getPrecioCamionHora();
+                    sumaEspaciosCamion();
+        }
+        listaVehiculos.remove(vehiculo);
+        return pago;
+    }
+
 	public boolean actualizarVehiculo(String placa, Vehiculo actualizado) {
         boolean centinela = false;
         for (Vehiculo vehiculo : listaVehiculos) {
@@ -288,6 +409,56 @@ public class Parqueadero {
                 centinela = true;
                 break;
             }
+        }
+        return centinela;
+    }
+    public Collection<HistorialPagos> filtrarPagosPorFecha(LocalDate fechaInicio, LocalDate fechaSalida) {
+        Collection<HistorialPagos> resultado = new ArrayList<>();
+
+        for (HistorialPagos pago : historialPagos) {
+            LocalDate fecha = pago.getFecha();
+
+            if ((fecha.isEqual(fechaInicio) || fecha.isAfter(fechaInicio)) &&
+                (fecha.isEqual(fechaSalida) || fecha.isBefore(fechaSalida))) {
+                resultado.add(pago);
+            }
+        }
+
+        return resultado;
+    }
+    public boolean sumaEspaciosCamion(){
+        int espacios = espaciosDisponibles.getEspaciosCamion();
+        boolean centinela = false;
+        if(espacios != null){
+            espaciosDisponibles.setEspaciosCamion(espacios+1);
+            centinela = true;
+        }
+        else{
+            System.out.println("No se pudo sumar el espacio");
+        }
+        return centinela;
+    }
+    public boolean sumaEspaciosMoto(){
+        int espacios = espaciosDisponibles.getEspaciosMoto();
+        boolean centinela = false;
+        if(espacios != null){
+            espaciosDisponibles.setEspaciosMoto(espacios+1);
+            centinela = true;
+        }
+        else{
+            System.out.println("No se pudo sumar el espacio");
+        }
+        return centinela;
+    }
+    public boolean sumaEspaciosAutomovil(){
+        int espacios = espaciosDisponibles.getEspaciosAutomovil();
+        boolean centinela = false;
+        if(espacios != null){
+            espaciosDisponibles.setEspaciosAutomovil(espacios+1);
+            centinela = true;
+        }
+        else{
+            System.out.println("No se pudo sumar el espacio");
         }
         return centinela;
     }
@@ -327,13 +498,16 @@ public class Parqueadero {
         }
         return centinela;
     }
-	
     
-
-
-		
-
-		
-
+    public void TerminoMembresia(String placa) {
+		for (Vehiculo vehiculo : listaVehiculos) {
+			if (vehiculo.getPlaca().equals(placa)) {
+				
+				LocalDate actual = LocalDate.now();
+				vehiculo.getMembresia().getFinMembresia();
+				
+			}
+		}
+	}
 		
 }
